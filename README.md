@@ -380,21 +380,6 @@ Create a free M0 cluster, whitelist your backend IP, and paste the connection st
 
 ---
 
-## 🗺️ Roadmap
-
-- [ ] Promo code validation + discount engine
-- [ ] Brand filter + brand detail pages
-- [ ] Multiple images per product variant
-- [ ] Order tracking page with status timeline
-- [ ] Admin dashboard (product CRUD, order management)
-- [ ] Email confirmation on order (Resend / Nodemailer)
-- [ ] Redis-backed rate limiting
-- [ ] Stripe as an additional payment option
-- [ ] CI/CD pipeline (GitHub Actions → Vercel + Railway)
-- [ ] Vitest unit tests + Cypress E2E
-
----
-
 ## 📄 License
 
 MIT © [navin-shanke](https://github.com/navin-shanke)
