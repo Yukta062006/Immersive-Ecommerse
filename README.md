@@ -1,4 +1,4 @@
-# CODSOFT - Level 3 Task 1: E-Commerce Website
+# E-Commerce Website
 
 ## 🛒 Immersive E-Commerce Store
 
