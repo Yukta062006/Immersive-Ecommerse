@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { User } from '@/types/user';
 import api from '@/lib/api';
+import { useCartStore } from '@/stores/useCartStore';
 
 const USER_STORAGE_KEY = 'immersive_user';
 
@@ -40,6 +41,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     saveUserToStorage(user);
     userLoaded = true;
     set({ user, isAuthenticated: true, isMockAuth: false });
+    await useCartStore.getState().mergeGuestCart();
   },
 
   signup: async (name, email, password) => {
@@ -50,6 +52,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     saveUserToStorage(user);
     userLoaded = true;
     set({ user, isAuthenticated: true, isMockAuth: false });
+    await useCartStore.getState().mergeGuestCart();
   },
 
   logout: () => {
@@ -58,6 +61,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     saveUserToStorage(null);
     userLoaded = false;
     set({ user: null, isAuthenticated: false, isMockAuth: false });
+    useCartStore.getState().resetCart();
   },
 
   loadUser: async () => {
