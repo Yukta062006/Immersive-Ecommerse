@@ -35,7 +35,7 @@ export default function QuickViewModal({ product, onClose }: QuickViewModalProps
   const handleAddToCart = () => {
     const variantId = selectedVariant?.id || product.variants[0]?.id;
     if (variantId) {
-      addItem(product.id, variantId);
+      addItem(product.id, variantId, 1, product, selectedVariant || product.variants[0]);
       addToast({ type: 'success', message: `${product.name} added to cart` });
       onClose();
     }

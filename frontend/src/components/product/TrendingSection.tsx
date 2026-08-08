@@ -100,7 +100,7 @@ function TrendingCard({ product, index }: { product: Product; index: number }) {
     e.stopPropagation();
     const variant = product.variants[0];
     if (variant) {
-      addItem(product.id, variant.id);
+      addItem(product.id, variant.id, 1, product, variant);
       addToast({ type: 'success', message: `${product.name} added to cart` });
     }
   };

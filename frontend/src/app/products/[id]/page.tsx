@@ -380,6 +380,8 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
               productId={product.id}
               variantId={selectedVariant?.id || product.variants[0]?.id || ''}
               disabled={!selectedVariant || selectedVariant.stock === 0}
+              product={product}
+              variant={selectedVariant || product.variants[0]}
             />
 
             {/* Trust signals */}

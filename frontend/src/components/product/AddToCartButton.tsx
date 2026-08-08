@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Product, ProductVariant } from '@/types/product';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCartStore } from '@/stores/useCartStore';
 import { useUIStore } from '@/stores/useUIStore';
@@ -9,12 +10,16 @@ interface AddToCartButtonProps {
   productId: string;
   variantId: string;
   disabled?: boolean;
+  product?: Product;
+  variant?: ProductVariant;
 }
 
 export default function AddToCartButton({
   productId,
   variantId,
   disabled = false,
+  product,
+  variant,
 }: AddToCartButtonProps) {
   const [state, setState] = useState<'idle' | 'adding' | 'success'>('idle');
   const addItem = useCartStore((s) => s.addItem);
@@ -25,7 +30,7 @@ export default function AddToCartButton({
     setState('adding');
 
     try {
-      await addItem(productId, variantId);
+      await addItem(productId, variantId, 1, product, variant);
       setState('success');
       addToast({ type: 'success', message: 'Added to cart!' });
       setTimeout(() => setState('idle'), 2000);

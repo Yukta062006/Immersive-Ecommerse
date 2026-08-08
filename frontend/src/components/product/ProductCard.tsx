@@ -33,7 +33,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
     e.preventDefault();
     e.stopPropagation();
     if (defaultVariant) {
-      addItem(product.id, defaultVariant.id);
+      addItem(product.id, defaultVariant.id, 1, product, defaultVariant);
       addToast({ type: 'success', message: `${product.name} added to cart` });
     }
   };
