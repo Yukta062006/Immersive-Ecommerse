@@ -4,37 +4,12 @@ import api from '@/lib/api';
 
 const USER_STORAGE_KEY = 'immersive_user';
 
-function isNetworkError(err: unknown): boolean {
-  if (err && typeof err === 'object' && 'code' in err) {
-    return (err as { code: string }).code === 'ERR_NETWORK' || (err as { code: string }).code === 'ECONNREFUSED';
-  }
-  if (err && typeof err === 'object' && 'message' in err) {
-    const msg = (err as { message: string }).message;
-    return msg.includes('Network Error') || msg.includes('ERR_NETWORK');
-  }
-  return false;
-}
-
-function generateFakeToken(): string {
-  return btoa(JSON.stringify({ iat: Date.now(), exp: Date.now() + 86400000 }));
-}
-
 function saveUserToStorage(user: User | null) {
   if (typeof window === 'undefined') return;
   if (user) {
     localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
   } else {
     localStorage.removeItem(USER_STORAGE_KEY);
-  }
-}
-
-function loadUserFromStorage(): User | null {
-  if (typeof window === 'undefined') return null;
-  try {
-    const raw = localStorage.getItem(USER_STORAGE_KEY);
-    return raw ? JSON.parse(raw) : null;
-  } catch {
-    return null;
   }
 }
 
@@ -58,61 +33,23 @@ export const useAuthStore = create<AuthState>((set) => ({
   isMockAuth: false,
 
   login: async (email, password) => {
-    try {
-      const { data } = await api.post('/auth/login', { email, password });
-      localStorage.setItem('accessToken', data.accessToken);
-      localStorage.setItem('refreshToken', data.refreshToken);
-      const user = data.user;
-      saveUserToStorage(user);
-      userLoaded = true;
-      set({ user, isAuthenticated: true, isMockAuth: false });
-    } catch (err) {
-      if (isNetworkError(err)) {
-        const mockUser: User = {
-          id: 'mock_' + Date.now(),
-          email,
-          name: email.split('@')[0],
-          role: 'customer',
-          createdAt: new Date().toISOString(),
-        };
-        localStorage.setItem('accessToken', generateFakeToken());
-        localStorage.setItem('refreshToken', generateFakeToken());
-        saveUserToStorage(mockUser);
-        userLoaded = true;
-        set({ user: mockUser, isAuthenticated: true, isMockAuth: true });
-      } else {
-        throw err;
-      }
-    }
+    const { data } = await api.post('/auth/login', { email, password });
+    localStorage.setItem('accessToken', data.accessToken);
+    localStorage.setItem('refreshToken', data.refreshToken);
+    const user = data.user;
+    saveUserToStorage(user);
+    userLoaded = true;
+    set({ user, isAuthenticated: true, isMockAuth: false });
   },
 
   signup: async (name, email, password) => {
-    try {
-      const { data } = await api.post('/auth/signup', { name, email, password });
-      localStorage.setItem('accessToken', data.accessToken);
-      localStorage.setItem('refreshToken', data.refreshToken);
-      const user = data.user;
-      saveUserToStorage(user);
-      userLoaded = true;
-      set({ user, isAuthenticated: true, isMockAuth: false });
-    } catch (err) {
-      if (isNetworkError(err)) {
-        const mockUser: User = {
-          id: 'mock_' + Date.now(),
-          email,
-          name,
-          role: 'customer',
-          createdAt: new Date().toISOString(),
-        };
-        localStorage.setItem('accessToken', generateFakeToken());
-        localStorage.setItem('refreshToken', generateFakeToken());
-        saveUserToStorage(mockUser);
-        userLoaded = true;
-        set({ user: mockUser, isAuthenticated: true, isMockAuth: true });
-      } else {
-        throw err;
-      }
-    }
+    const { data } = await api.post('/auth/signup', { name, email, password });
+    localStorage.setItem('accessToken', data.accessToken);
+    localStorage.setItem('refreshToken', data.refreshToken);
+    const user = data.user;
+    saveUserToStorage(user);
+    userLoaded = true;
+    set({ user, isAuthenticated: true, isMockAuth: false });
   },
 
   logout: () => {
@@ -137,15 +74,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       saveUserToStorage(user);
       userLoaded = true;
       set({ user, isAuthenticated: true, isMockAuth: false, isLoading: false });
-    } catch (err) {
-      if (isNetworkError(err)) {
-        const stored = loadUserFromStorage();
-        if (stored) {
-          userLoaded = true;
-          set({ user: stored, isAuthenticated: true, isMockAuth: true, isLoading: false });
-          return;
-        }
-      }
+    } catch {
       localStorage.removeItem('accessToken');
       localStorage.removeItem('refreshToken');
       saveUserToStorage(null);

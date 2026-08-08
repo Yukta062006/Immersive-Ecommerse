@@ -8,8 +8,8 @@ const baseProducts: Product[] = [
     slug: 'air-max-quantum',
     description: 'Experience the future of footwear with our Air Max Quantum. Featuring adaptive cushioning with responsive energy return and a sleek aerodynamic silhouette. Built with sustainable recycled materials and engineered for all-day comfort from morning commute to evening run.',
     shortDescription: 'Ultra-lightweight adaptive cushioning sneakers',
-    price: 18900,
-    salePrice: 14900,
+    price: 189,
+    salePrice: 149,
     brand: 'Nike',
     category: 'Footwear',
     subcategory: 'Sneakers',
@@ -22,13 +22,13 @@ const baseProducts: Product[] = [
       { id: '1-4', url: 'https://images.unsplash.com/photo-1584735175315-9d5df9b77e79?w=600&h=600&fit=crop', alt: 'Air Max Quantum on foot', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v1-1', name: 'Black / 9', sku: 'AMQ-BLK-9', price: 18900, salePrice: 14900, stock: 10, size: '9', color: 'Black', colorHex: '#111', images: [{ id: '1-1', url: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop', alt: 'Black size 9', width: 600, height: 600 }] },
-      { id: 'v1-2', name: 'Black / 10', sku: 'AMQ-BLK-10', price: 18900, salePrice: 14900, stock: 8, size: '10', color: 'Black', colorHex: '#111', images: [{ id: '1-1', url: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop', alt: 'Black size 10', width: 600, height: 600 }] },
-      { id: 'v1-3', name: 'Black / 11', sku: 'AMQ-BLK-11', price: 18900, salePrice: 14900, stock: 6, size: '11', color: 'Black', colorHex: '#111', images: [{ id: '1-1', url: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop', alt: 'Black size 11', width: 600, height: 600 }] },
-      { id: 'v1-4', name: 'White / 9', sku: 'AMQ-WHT-9', price: 18900, salePrice: 14900, stock: 12, size: '9', color: 'White', colorHex: '#f8f8f8', images: [{ id: '1-2', url: 'https://images.unsplash.com/photo-1606107557495-6c3ed0e7ee8e?w=600&h=600&fit=crop', alt: 'White size 9', width: 600, height: 600 }] },
-      { id: 'v1-5', name: 'White / 10', sku: 'AMQ-WHT-10', price: 18900, salePrice: 14900, stock: 15, size: '10', color: 'White', colorHex: '#f8f8f8', images: [{ id: '1-2', url: 'https://images.unsplash.com/photo-1606107557495-6c3ed0e7ee8e?w=600&h=600&fit=crop', alt: 'White size 10', width: 600, height: 600 }] },
-      { id: 'v1-6', name: 'White / 11', sku: 'AMQ-WHT-11', price: 18900, salePrice: 14900, stock: 9, size: '11', color: 'White', colorHex: '#f8f8f8', images: [{ id: '1-2', url: 'https://images.unsplash.com/photo-1606107557495-6c3ed0e7ee8e?w=600&h=600&fit=crop', alt: 'White size 11', width: 600, height: 600 }] },
-      { id: 'v1-7', name: 'Red / 10', sku: 'AMQ-RED-10', price: 18900, salePrice: 14900, stock: 4, size: '10', color: 'Red', colorHex: '#dc2626', images: [{ id: '1-3', url: 'https://images.unsplash.com/photo-1595950653106-4c717e2be3d4?w=600&h=600&fit=crop', alt: 'Red size 10', width: 600, height: 600 }] },
+      { id: 'v1-1', name: 'Black / 9', sku: 'AMQ-BLK-9', price: 189, salePrice: 149, stock: 10, size: '9', color: 'Black', colorHex: '#111', images: [{ id: '1-1', url: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop', alt: 'Black size 9', width: 600, height: 600 }] },
+      { id: 'v1-2', name: 'Black / 10', sku: 'AMQ-BLK-10', price: 189, salePrice: 149, stock: 8, size: '10', color: 'Black', colorHex: '#111', images: [{ id: '1-1', url: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop', alt: 'Black size 10', width: 600, height: 600 }] },
+      { id: 'v1-3', name: 'Black / 11', sku: 'AMQ-BLK-11', price: 189, salePrice: 149, stock: 6, size: '11', color: 'Black', colorHex: '#111', images: [{ id: '1-1', url: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop', alt: 'Black size 11', width: 600, height: 600 }] },
+      { id: 'v1-4', name: 'White / 9', sku: 'AMQ-WHT-9', price: 189, salePrice: 149, stock: 12, size: '9', color: 'White', colorHex: '#f8f8f8', images: [{ id: '1-2', url: 'https://images.unsplash.com/photo-1606107557495-6c3ed0e7ee8e?w=600&h=600&fit=crop', alt: 'White size 9', width: 600, height: 600 }] },
+      { id: 'v1-5', name: 'White / 10', sku: 'AMQ-WHT-10', price: 189, salePrice: 149, stock: 15, size: '10', color: 'White', colorHex: '#f8f8f8', images: [{ id: '1-2', url: 'https://images.unsplash.com/photo-1606107557495-6c3ed0e7ee8e?w=600&h=600&fit=crop', alt: 'White size 10', width: 600, height: 600 }] },
+      { id: 'v1-6', name: 'White / 11', sku: 'AMQ-WHT-11', price: 189, salePrice: 149, stock: 9, size: '11', color: 'White', colorHex: '#f8f8f8', images: [{ id: '1-2', url: 'https://images.unsplash.com/photo-1606107557495-6c3ed0e7ee8e?w=600&h=600&fit=crop', alt: 'White size 11', width: 600, height: 600 }] },
+      { id: 'v1-7', name: 'Red / 10', sku: 'AMQ-RED-10', price: 189, salePrice: 149, stock: 4, size: '10', color: 'Red', colorHex: '#dc2626', images: [{ id: '1-3', url: 'https://images.unsplash.com/photo-1595950653106-4c717e2be3d4?w=600&h=600&fit=crop', alt: 'Red size 10', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r1-1', userId: 'u1', userName: 'Alex M.', rating: 5, title: 'Best sneakers ever!', comment: 'The comfort level is unreal. Wore them all day with zero fatigue. The cushioning adapts to your stride perfectly.', createdAt: '2025-01-15', verified: true },
@@ -47,7 +47,7 @@ const baseProducts: Product[] = [
     slug: 'ultraboost-nova',
     description: 'The Ultraboost Nova delivers incredible energy return with every step. Primeknit upper wraps your foot in adaptive comfort while the Continental rubber outsole provides exceptional grip in all conditions.',
     shortDescription: 'Primeknit upper with Continental outsole',
-    price: 17900,
+    price: 179,
     brand: 'Adidas',
     category: 'Footwear',
     subcategory: 'Sneakers',
@@ -59,10 +59,10 @@ const baseProducts: Product[] = [
       { id: '2-3', url: 'https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=600&h=600&fit=crop', alt: 'Ultraboost Nova detail', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v2-1', name: 'Core Black / 9', sku: 'UB-UBLK-9', price: 17900, stock: 14, size: '9', color: 'Black', colorHex: '#111', images: [{ id: '2-1', url: 'https://images.unsplash.com/photo-1608231387042-66d030c71347?w=600&h=600&fit=crop', alt: 'Black', width: 600, height: 600 }] },
-      { id: 'v2-2', name: 'Core Black / 10', sku: 'UB-UBLK-10', price: 17900, stock: 11, size: '10', color: 'Black', colorHex: '#111', images: [{ id: '2-1', url: 'https://images.unsplash.com/photo-1608231387042-66d030c71347?w=600&h=600&fit=crop', alt: 'Black', width: 600, height: 600 }] },
-      { id: 'v2-3', name: 'Core Black / 11', sku: 'UB-UBLK-11', price: 17900, stock: 7, size: '11', color: 'Black', colorHex: '#111', images: [{ id: '2-1', url: 'https://images.unsplash.com/photo-1608231387042-66d030c71347?w=600&h=600&fit=crop', alt: 'Black', width: 600, height: 600 }] },
-      { id: 'v2-4', name: 'Cloud White / 10', sku: 'UB-UCWH-10', price: 17900, stock: 9, size: '10', color: 'White', colorHex: '#f8f8f8', images: [{ id: '2-2', url: 'https://images.unsplash.com/photo-1600185365926-3a2d3a6f7c31?w=600&h=600&fit=crop', alt: 'White', width: 600, height: 600 }] },
+      { id: 'v2-1', name: 'Core Black / 9', sku: 'UB-UBLK-9', price: 179, stock: 14, size: '9', color: 'Black', colorHex: '#111', images: [{ id: '2-1', url: 'https://images.unsplash.com/photo-1608231387042-66d030c71347?w=600&h=600&fit=crop', alt: 'Black', width: 600, height: 600 }] },
+      { id: 'v2-2', name: 'Core Black / 10', sku: 'UB-UBLK-10', price: 179, stock: 11, size: '10', color: 'Black', colorHex: '#111', images: [{ id: '2-1', url: 'https://images.unsplash.com/photo-1608231387042-66d030c71347?w=600&h=600&fit=crop', alt: 'Black', width: 600, height: 600 }] },
+      { id: 'v2-3', name: 'Core Black / 11', sku: 'UB-UBLK-11', price: 179, stock: 7, size: '11', color: 'Black', colorHex: '#111', images: [{ id: '2-1', url: 'https://images.unsplash.com/photo-1608231387042-66d030c71347?w=600&h=600&fit=crop', alt: 'Black', width: 600, height: 600 }] },
+      { id: 'v2-4', name: 'Cloud White / 10', sku: 'UB-UCWH-10', price: 179, stock: 9, size: '10', color: 'White', colorHex: '#f8f8f8', images: [{ id: '2-2', url: 'https://images.unsplash.com/photo-1600185365926-3a2d3a6f7c31?w=600&h=600&fit=crop', alt: 'White', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r2-1', userId: 'u5', userName: 'Chris D.', rating: 5, title: 'Best running shoe I have owned', comment: 'Energy return is insane. My 5K time improved by 30 seconds. Primeknit hugs your foot like a sock.', createdAt: '2025-02-01', verified: true },
@@ -79,7 +79,7 @@ const baseProducts: Product[] = [
     slug: 'iphone-16-pro',
     description: 'The most powerful iPhone ever. Featuring the A18 Pro chip, a stunning 6.7-inch Super Retina XDR display with ProMotion, and a 48MP camera system with 5x optical zoom. Built with aerospace-grade titanium.',
     shortDescription: 'A18 Pro chip with titanium design',
-    price: 119900,
+    price: 1199,
     brand: 'Apple',
     category: 'Electronics',
     subcategory: 'Phones',
@@ -91,9 +91,9 @@ const baseProducts: Product[] = [
       { id: '3-3', url: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop', alt: 'iPhone 16 Pro detail', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v3-1', name: 'Natural Titanium / 256GB', sku: 'IP16P-NT-256', price: 119900, stock: 20, size: '256GB', color: 'Titanium', colorHex: '#8B8682', images: [{ id: '3-1', url: 'https://images.unsplash.com/photo-1695048133142-1a204f712b8b?w=600&h=600&fit=crop', alt: 'Natural Titanium', width: 600, height: 600 }] },
-      { id: 'v3-2', name: 'Black Titanium / 256GB', sku: 'IP16P-BT-256', price: 119900, stock: 15, size: '256GB', color: 'Black', colorHex: '#1a1a1a', images: [{ id: '3-1', url: 'https://images.unsplash.com/photo-1695048133142-1a204f712b8b?w=600&h=600&fit=crop', alt: 'Black Titanium', width: 600, height: 600 }] },
-      { id: 'v3-3', name: 'White Titanium / 512GB', sku: 'IP16P-WT-512', price: 139900, stock: 8, size: '512GB', color: 'White', colorHex: '#e5e5e5', images: [{ id: '3-2', url: 'https://images.unsplash.com/photo-1592750475338-74b7b2102593?w=600&h=600&fit=crop', alt: 'White Titanium', width: 600, height: 600 }] },
+      { id: 'v3-1', name: 'Natural Titanium / 256GB', sku: 'IP16P-NT-256', price: 1199, stock: 20, size: '256GB', color: 'Titanium', colorHex: '#8B8682', images: [{ id: '3-1', url: 'https://images.unsplash.com/photo-1695048133142-1a204f712b8b?w=600&h=600&fit=crop', alt: 'Natural Titanium', width: 600, height: 600 }] },
+      { id: 'v3-2', name: 'Black Titanium / 256GB', sku: 'IP16P-BT-256', price: 1199, stock: 15, size: '256GB', color: 'Black', colorHex: '#1a1a1a', images: [{ id: '3-1', url: 'https://images.unsplash.com/photo-1695048133142-1a204f712b8b?w=600&h=600&fit=crop', alt: 'Black Titanium', width: 600, height: 600 }] },
+      { id: 'v3-3', name: 'White Titanium / 512GB', sku: 'IP16P-WT-512', price: 1399, stock: 8, size: '512GB', color: 'White', colorHex: '#e5e5e5', images: [{ id: '3-2', url: 'https://images.unsplash.com/photo-1592750475338-74b7b2102593?w=600&h=600&fit=crop', alt: 'White Titanium', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r3-1', userId: 'u7', userName: 'David R.', rating: 5, title: 'Best iPhone yet', comment: 'Camera system is absolutely incredible. The 5x zoom is a game-changer for photography. Battery lasts all day.', createdAt: '2025-03-01', verified: true },
@@ -111,8 +111,8 @@ const baseProducts: Product[] = [
     slug: 'galaxy-s24-ultra',
     description: 'The ultimate Android experience. Galaxy AI powered, built-in S Pen, 200MP camera with AI-enhanced zoom, and a stunning 6.8-inch Dynamic AMOLED display with Vision Booster. Titanium frame for durability.',
     shortDescription: 'Galaxy AI with 200MP camera & S Pen',
-    price: 129900,
-    salePrice: 109900,
+    price: 1299,
+    salePrice: 1099,
     brand: 'Samsung',
     category: 'Electronics',
     subcategory: 'Phones',
@@ -124,8 +124,8 @@ const baseProducts: Product[] = [
       { id: '4-3', url: 'https://images.unsplash.com/photo-1585060544812-6b45942bb584?w=600&h=600&fit=crop', alt: 'Galaxy S24 Ultra S Pen', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v4-1', name: 'Titanium Gray / 256GB', sku: 'GS24U-TG-256', price: 129900, salePrice: 109900, stock: 12, size: '256GB', color: 'Gray', colorHex: '#6b7280', images: [{ id: '4-1', url: 'https://images.unsplash.com/photo-1610945415295-db7f4976c3d4?w=600&h=600&fit=crop', alt: 'Titanium Gray', width: 600, height: 600 }] },
-      { id: 'v4-2', name: 'Titanium Black / 512GB', sku: 'GS24U-TB-512', price: 141900, salePrice: 119900, stock: 6, size: '512GB', color: 'Black', colorHex: '#1a1a1a', images: [{ id: '4-1', url: 'https://images.unsplash.com/photo-1610945415295-db7f4976c3d4?w=600&h=600&fit=crop', alt: 'Titanium Black', width: 600, height: 600 }] },
+      { id: 'v4-1', name: 'Titanium Gray / 256GB', sku: 'GS24U-TG-256', price: 1299, salePrice: 1099, stock: 12, size: '256GB', color: 'Gray', colorHex: '#6b7280', images: [{ id: '4-1', url: 'https://images.unsplash.com/photo-1610945415295-db7f4976c3d4?w=600&h=600&fit=crop', alt: 'Titanium Gray', width: 600, height: 600 }] },
+      { id: 'v4-2', name: 'Titanium Black / 512GB', sku: 'GS24U-TB-512', price: 1419, salePrice: 1199, stock: 6, size: '512GB', color: 'Black', colorHex: '#1a1a1a', images: [{ id: '4-1', url: 'https://images.unsplash.com/photo-1610945415295-db7f4976c3d4?w=600&h=600&fit=crop', alt: 'Titanium Black', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r4-1', userId: 'u10', userName: 'Ahmed S.', rating: 5, title: 'Galaxy AI is the future', comment: 'Circle to Search and Live Translate are incredibly useful. The 200MP camera delivers stunning detail.', createdAt: '2025-01-20', verified: true },
@@ -142,8 +142,8 @@ const baseProducts: Product[] = [
     slug: 'wh-1000xm6-headphones',
     description: 'Industry-leading noise cancellation with Auto NC Optimizer. 40-hour battery life, crystal clear hands-free calling with 4 beamforming mics, and premium comfort with soft fit leather. Multipoint connection for seamless device switching.',
     shortDescription: 'Industry-leading noise cancellation',
-    price: 34900,
-    salePrice: 27900,
+    price: 349,
+    salePrice: 279,
     brand: 'Sony',
     category: 'Electronics',
     subcategory: 'Audio',
@@ -155,8 +155,8 @@ const baseProducts: Product[] = [
       { id: '5-3', url: 'https://images.unsplash.com/photo-1583394838121-a5a6f5a5b0f4?w=600&h=600&fit=crop', alt: 'WH-1000XM6 on ear', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v5-1', name: 'Midnight Black', sku: 'WHMX6-MBK', price: 34900, salePrice: 27900, stock: 18, color: 'Black', colorHex: '#111', images: [{ id: '5-1', url: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=600&fit=crop', alt: 'Black', width: 600, height: 600 }] },
-      { id: 'v5-2', name: 'Platinum Silver', sku: 'WHMX6-PS', price: 34900, salePrice: 27900, stock: 10, color: 'Silver', colorHex: '#c0c0c0', images: [{ id: '5-2', url: 'https://images.unsplash.com/photo-1484704849700-f032d5265c49?w=600&h=600&fit=crop', alt: 'Silver', width: 600, height: 600 }] },
+      { id: 'v5-1', name: 'Midnight Black', sku: 'WHMX6-MBK', price: 349, salePrice: 279, stock: 18, color: 'Black', colorHex: '#111', images: [{ id: '5-1', url: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=600&fit=crop', alt: 'Black', width: 600, height: 600 }] },
+      { id: 'v5-2', name: 'Platinum Silver', sku: 'WHMX6-PS', price: 349, salePrice: 279, stock: 10, color: 'Silver', colorHex: '#c0c0c0', images: [{ id: '5-2', url: 'https://images.unsplash.com/photo-1484704849700-f032d5265c49?w=600&h=600&fit=crop', alt: 'Silver', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r5-1', userId: 'u12', userName: 'Rachel G.', rating: 5, title: 'ANC is incredible', comment: 'Blocks out everything. I use these for work-from-home calls and music. Best investment this year.', createdAt: '2025-02-14', verified: true },
@@ -174,7 +174,7 @@ const baseProducts: Product[] = [
     slug: 'wh-1000xm5-headphones',
     description: 'Previous generation Sony flagship with excellent noise cancellation, 30-hour battery, and premium comfort at a lower price point. Still one of the best ANC headphones available.',
     shortDescription: 'Previous-gen flagship ANC headphones',
-    price: 29900,
+    price: 299,
     brand: 'Sony',
     category: 'Electronics',
     subcategory: 'Audio',
@@ -185,8 +185,8 @@ const baseProducts: Product[] = [
       { id: '6-2', url: 'https://images.unsplash.com/photo-1583394838121-a5a6f5a5b0f4?w=600&h=600&fit=crop', alt: 'WH-1000XM5 side', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v6-1', name: 'Black', sku: 'WHMX5-BK', price: 29900, stock: 22, color: 'Black', colorHex: '#111', images: [{ id: '6-1', url: 'https://images.unsplash.com/photo-1484704849700-f032d5265c49?w=600&h=600&fit=crop', alt: 'Black', width: 600, height: 600 }] },
-      { id: 'v6-2', name: 'Silver', sku: 'WHMX5-SL', price: 29900, stock: 15, color: 'Silver', colorHex: '#c0c0c0', images: [{ id: '6-1', url: 'https://images.unsplash.com/photo-1484704849700-f032d5265c49?w=600&h=600&fit=crop', alt: 'Silver', width: 600, height: 600 }] },
+      { id: 'v6-1', name: 'Black', sku: 'WHMX5-BK', price: 299, stock: 22, color: 'Black', colorHex: '#111', images: [{ id: '6-1', url: 'https://images.unsplash.com/photo-1484704849700-f032d5265c49?w=600&h=600&fit=crop', alt: 'Black', width: 600, height: 600 }] },
+      { id: 'v6-2', name: 'Silver', sku: 'WHMX5-SL', price: 299, stock: 15, color: 'Silver', colorHex: '#c0c0c0', images: [{ id: '6-1', url: 'https://images.unsplash.com/photo-1484704849700-f032d5265c49?w=600&h=600&fit=crop', alt: 'Silver', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r6-1', userId: 'u15', userName: 'Nathan F.', rating: 4, title: 'Still great value', comment: 'Not much different from the XM6 for most people. ANC is nearly identical. Save the $70.', createdAt: '2025-03-05', verified: true },
@@ -202,7 +202,7 @@ const baseProducts: Product[] = [
     slug: 'galaxy-buds3-pro',
     description: 'Premium true wireless earbuds with intelligent ANC, 360 Audio with head tracking, and crystal-clear call quality. IP57 water resistant with 30-hour total battery life including the case.',
     shortDescription: 'Intelligent ANC with 360 Audio',
-    price: 18900,
+    price: 189,
     brand: 'Samsung',
     category: 'Electronics',
     subcategory: 'Audio',
@@ -213,7 +213,7 @@ const baseProducts: Product[] = [
       { id: '7-2', url: 'https://images.unsplash.com/photo-1606220588913-b3aacb4d2f45?w=600&h=600&fit=crop', alt: 'Galaxy Buds3 Pro case', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v7-1', name: 'Silver', sku: 'GB3P-SL', price: 18900, stock: 25, color: 'Silver', colorHex: '#c0c0c0', images: [{ id: '7-1', url: 'https://images.unsplash.com/photo-1590658264439-f5022a5b8a53?w=600&h=600&fit=crop', alt: 'Silver', width: 600, height: 600 }] },
+      { id: 'v7-1', name: 'Silver', sku: 'GB3P-SL', price: 189, stock: 25, color: 'Silver', colorHex: '#c0c0c0', images: [{ id: '7-1', url: 'https://images.unsplash.com/photo-1590658264439-f5022a5b8a53?w=600&h=600&fit=crop', alt: 'Silver', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r7-1', userId: 'u16', userName: 'Jessica L.', rating: 4, title: 'Great for Galaxy users', comment: 'Seamless pairing with Galaxy phones. ANC works well for the size. Wish bass was a bit punchier.', createdAt: '2025-01-25', verified: true },
@@ -229,7 +229,7 @@ const baseProducts: Product[] = [
     slug: 'alpha-jacket',
     description: 'Waterproof-breathable shell with FuseForm construction for targeted durability without weight. Advanced FUTURELIGHT technology provides active airflow regulation. Fully seam-sealed for complete weather protection.',
     shortDescription: 'Waterproof breathable shell jacket',
-    price: 29900,
+    price: 299,
     brand: 'North Face',
     category: 'Outerwear',
     subcategory: 'Jackets',
@@ -241,11 +241,11 @@ const baseProducts: Product[] = [
       { id: '8-3', url: 'https://images.unsplash.com/photo-1543076447-215ad9ba9b5d?w=600&h=600&fit=crop', alt: 'Alpha Jacket back', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v8-1', name: 'TNF Black / S', sku: 'AJ-BLK-S', price: 29900, stock: 8, size: 'S', color: 'Black', colorHex: '#111', images: [{ id: '8-1', url: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=600&fit=crop', alt: 'Black S', width: 600, height: 600 }] },
-      { id: 'v8-2', name: 'TNF Black / M', sku: 'AJ-BLK-M', price: 29900, stock: 12, size: 'M', color: 'Black', colorHex: '#111', images: [{ id: '8-1', url: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=600&fit=crop', alt: 'Black M', width: 600, height: 600 }] },
-      { id: 'v8-3', name: 'TNF Black / L', sku: 'AJ-BLK-L', price: 29900, stock: 10, size: 'L', color: 'Black', colorHex: '#111', images: [{ id: '8-1', url: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=600&fit=crop', alt: 'Black L', width: 600, height: 600 }] },
-      { id: 'v8-4', name: 'Asphalt Blue / M', sku: 'AJ-ABL-M', price: 29900, stock: 5, size: 'M', color: 'Blue', colorHex: '#3b82f6', images: [{ id: '8-2', url: 'https://images.unsplash.com/photo-1544923246-773079636a58?w=600&h=600&fit=crop', alt: 'Blue M', width: 600, height: 600 }] },
-      { id: 'v8-5', name: 'Asphalt Blue / L', sku: 'AJ-ABL-L', price: 29900, stock: 3, size: 'L', color: 'Blue', colorHex: '#3b82f6', images: [{ id: '8-2', url: 'https://images.unsplash.com/photo-1544923246-773079636a58?w=600&h=600&fit=crop', alt: 'Blue L', width: 600, height: 600 }] },
+      { id: 'v8-1', name: 'TNF Black / S', sku: 'AJ-BLK-S', price: 299, stock: 8, size: 'S', color: 'Black', colorHex: '#111', images: [{ id: '8-1', url: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=600&fit=crop', alt: 'Black S', width: 600, height: 600 }] },
+      { id: 'v8-2', name: 'TNF Black / M', sku: 'AJ-BLK-M', price: 299, stock: 12, size: 'M', color: 'Black', colorHex: '#111', images: [{ id: '8-1', url: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=600&fit=crop', alt: 'Black M', width: 600, height: 600 }] },
+      { id: 'v8-3', name: 'TNF Black / L', sku: 'AJ-BLK-L', price: 299, stock: 10, size: 'L', color: 'Black', colorHex: '#111', images: [{ id: '8-1', url: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=600&fit=crop', alt: 'Black L', width: 600, height: 600 }] },
+      { id: 'v8-4', name: 'Asphalt Blue / M', sku: 'AJ-ABL-M', price: 299, stock: 5, size: 'M', color: 'Blue', colorHex: '#3b82f6', images: [{ id: '8-2', url: 'https://images.unsplash.com/photo-1544923246-773079636a58?w=600&h=600&fit=crop', alt: 'Blue M', width: 600, height: 600 }] },
+      { id: 'v8-5', name: 'Asphalt Blue / L', sku: 'AJ-ABL-L', price: 299, stock: 3, size: 'L', color: 'Blue', colorHex: '#3b82f6', images: [{ id: '8-2', url: 'https://images.unsplash.com/photo-1544923246-773079636a58?w=600&h=600&fit=crop', alt: 'Blue L', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r8-1', userId: 'u17', userName: 'Pat M.', rating: 5, title: 'Kept me dry in a downpour', comment: 'Tested in heavy rain and stayed completely dry. Breathability is legit — no clammy feeling inside.', createdAt: '2025-02-28', verified: true },
@@ -262,7 +262,7 @@ const baseProducts: Product[] = [
     slug: 'better-sweater-fleece',
     description: 'Made with 100% recycled polyester fleece dyed with a low-impact process. Fair Trade Certified sewn. The classic Better Sweater updated with improved fit and softer hand-feel. Perfect for layering or standalone warmth.',
     shortDescription: '100% recycled polyester fleece',
-    price: 13900,
+    price: 139,
     brand: 'Patagonia',
     category: 'Outerwear',
     subcategory: 'Fleece',
@@ -273,10 +273,10 @@ const baseProducts: Product[] = [
       { id: '9-2', url: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&h=600&fit=crop', alt: 'Better Sweater detail', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v9-1', name: 'New Navy / M', sku: 'BS-NNV-M', price: 13900, stock: 20, size: 'M', color: 'Navy', colorHex: '#1e3a5f', images: [{ id: '9-1', url: 'https://images.unsplash.com/photo-1609743522653-52354461eb23?w=600&h=600&fit=crop', alt: 'Navy M', width: 600, height: 600 }] },
-      { id: 'v9-2', name: 'New Navy / L', sku: 'BS-NNV-L', price: 13900, stock: 18, size: 'L', color: 'Navy', colorHex: '#1e3a5f', images: [{ id: '9-1', url: 'https://images.unsplash.com/photo-1609743522653-52354461eb23?w=600&h=600&fit=crop', alt: 'Navy L', width: 600, height: 600 }] },
-      { id: 'v9-3', name: 'Black / M', sku: 'BS-BLK-M', price: 13900, stock: 15, size: 'M', color: 'Black', colorHex: '#111', images: [{ id: '9-1', url: 'https://images.unsplash.com/photo-1609743522653-52354461eb23?w=600&h=600&fit=crop', alt: 'Black M', width: 600, height: 600 }] },
-      { id: 'v9-4', name: 'Black / L', sku: 'BS-BLK-L', price: 13900, stock: 12, size: 'L', color: 'Black', colorHex: '#111', images: [{ id: '9-1', url: 'https://images.unsplash.com/photo-1609743522653-52354461eb23?w=600&h=600&fit=crop', alt: 'Black L', width: 600, height: 600 }] },
+      { id: 'v9-1', name: 'New Navy / M', sku: 'BS-NNV-M', price: 139, stock: 20, size: 'M', color: 'Navy', colorHex: '#1e3a5f', images: [{ id: '9-1', url: 'https://images.unsplash.com/photo-1609743522653-52354461eb23?w=600&h=600&fit=crop', alt: 'Navy M', width: 600, height: 600 }] },
+      { id: 'v9-2', name: 'New Navy / L', sku: 'BS-NNV-L', price: 139, stock: 18, size: 'L', color: 'Navy', colorHex: '#1e3a5f', images: [{ id: '9-1', url: 'https://images.unsplash.com/photo-1609743522653-52354461eb23?w=600&h=600&fit=crop', alt: 'Navy L', width: 600, height: 600 }] },
+      { id: 'v9-3', name: 'Black / M', sku: 'BS-BLK-M', price: 139, stock: 15, size: 'M', color: 'Black', colorHex: '#111', images: [{ id: '9-1', url: 'https://images.unsplash.com/photo-1609743522653-52354461eb23?w=600&h=600&fit=crop', alt: 'Black M', width: 600, height: 600 }] },
+      { id: 'v9-4', name: 'Black / L', sku: 'BS-BLK-L', price: 139, stock: 12, size: 'L', color: 'Black', colorHex: '#111', images: [{ id: '9-1', url: 'https://images.unsplash.com/photo-1609743522653-52354461eb23?w=600&h=600&fit=crop', alt: 'Black L', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r9-1', userId: 'u19', userName: 'Kim J.', rating: 5, title: 'My go-to layer', comment: 'I have three of these in different colors. The recycled fleece is surprisingly soft and warm.', createdAt: '2025-01-10', verified: true },
@@ -292,7 +292,7 @@ const baseProducts: Product[] = [
     slug: 'tech-fleece-hoodie',
     description: 'Nike Tech Fleece offers premium lightweight warmth with a modern silhouette. Spacer knit construction provides insulation without bulk. The oversized hood and zippered pockets add sporty functionality.',
     shortDescription: 'Premium lightweight warmth hoodie',
-    price: 12900,
+    price: 129,
     brand: 'Nike',
     category: 'Outerwear',
     subcategory: 'Hoodies',
@@ -303,9 +303,9 @@ const baseProducts: Product[] = [
       { id: '10-2', url: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&h=600&fit=crop', alt: 'Tech Fleece Hoodie side', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v10-1', name: 'Black / M', sku: 'TFH-BLK-M', price: 12900, stock: 25, size: 'M', color: 'Black', colorHex: '#111', images: [{ id: '10-1', url: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&h=600&fit=crop', alt: 'Black M', width: 600, height: 600 }] },
-      { id: 'v10-2', name: 'Black / L', sku: 'TFH-BLK-L', price: 12900, stock: 20, size: 'L', color: 'Black', colorHex: '#111', images: [{ id: '10-1', url: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&h=600&fit=crop', alt: 'Black L', width: 600, height: 600 }] },
-      { id: 'v10-3', name: 'Gray / M', sku: 'TFH-GRY-M', price: 12900, stock: 18, size: 'M', color: 'Gray', colorHex: '#6b7280', images: [{ id: '10-2', url: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&h=600&fit=crop', alt: 'Gray M', width: 600, height: 600 }] },
+      { id: 'v10-1', name: 'Black / M', sku: 'TFH-BLK-M', price: 129, stock: 25, size: 'M', color: 'Black', colorHex: '#111', images: [{ id: '10-1', url: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&h=600&fit=crop', alt: 'Black M', width: 600, height: 600 }] },
+      { id: 'v10-2', name: 'Black / L', sku: 'TFH-BLK-L', price: 129, stock: 20, size: 'L', color: 'Black', colorHex: '#111', images: [{ id: '10-1', url: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&h=600&fit=crop', alt: 'Black L', width: 600, height: 600 }] },
+      { id: 'v10-3', name: 'Gray / M', sku: 'TFH-GRY-M', price: 129, stock: 18, size: 'M', color: 'Gray', colorHex: '#6b7280', images: [{ id: '10-2', url: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&h=600&fit=crop', alt: 'Gray M', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r10-1', userId: 'u20', userName: 'Andre P.', rating: 4, title: 'Great fit, warm', comment: 'Tech fleece keeps you warm without sweating. Good for commuting and casual wear.', createdAt: '2025-02-01', verified: true },
@@ -321,8 +321,8 @@ const baseProducts: Product[] = [
     slug: 'nebula-smart-watch',
     description: 'Advanced health monitoring with ECG, blood oxygen, and temperature sensing. Always-on Retina display with crack-resistant front crystal. Water resistant to 50m. GPS + Cellular for freedom from your phone.',
     shortDescription: 'Advanced health monitoring smart watch',
-    price: 49900,
-    salePrice: 39900,
+    price: 499,
+    salePrice: 399,
     brand: 'Apple',
     category: 'Accessories',
     subcategory: 'Watches',
@@ -334,9 +334,9 @@ const baseProducts: Product[] = [
       { id: '11-3', url: 'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=600&h=600&fit=crop', alt: 'Nebula Watch detail', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v11-1', name: 'Silver / 45mm', sku: 'NW-SLV-45', price: 49900, salePrice: 39900, stock: 15, size: '45mm', color: 'Silver', colorHex: '#c0c0c0', images: [{ id: '11-1', url: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=600&fit=crop', alt: 'Silver', width: 600, height: 600 }] },
-      { id: 'v11-2', name: 'Midnight / 45mm', sku: 'NW-MDN-45', price: 49900, salePrice: 39900, stock: 12, size: '45mm', color: 'Black', colorHex: '#1a1a1a', images: [{ id: '11-2', url: 'https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=600&h=600&fit=crop', alt: 'Midnight', width: 600, height: 600 }] },
-      { id: 'v11-3', name: 'Starlight / 41mm', sku: 'NW-STL-41', price: 44900, salePrice: 35900, stock: 10, size: '41mm', color: 'Gold', colorHex: '#d4a574', images: [{ id: '11-3', url: 'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=600&h=600&fit=crop', alt: 'Starlight', width: 600, height: 600 }] },
+      { id: 'v11-1', name: 'Silver / 45mm', sku: 'NW-SLV-45', price: 499, salePrice: 399, stock: 15, size: '45mm', color: 'Silver', colorHex: '#c0c0c0', images: [{ id: '11-1', url: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=600&fit=crop', alt: 'Silver', width: 600, height: 600 }] },
+      { id: 'v11-2', name: 'Midnight / 45mm', sku: 'NW-MDN-45', price: 499, salePrice: 399, stock: 12, size: '45mm', color: 'Black', colorHex: '#1a1a1a', images: [{ id: '11-2', url: 'https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=600&h=600&fit=crop', alt: 'Midnight', width: 600, height: 600 }] },
+      { id: 'v11-3', name: 'Starlight / 41mm', sku: 'NW-STL-41', price: 449, salePrice: 359, stock: 10, size: '41mm', color: 'Gold', colorHex: '#d4a574', images: [{ id: '11-3', url: 'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=600&h=600&fit=crop', alt: 'Starlight', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r11-1', userId: 'u21', userName: 'Olivia R.', rating: 5, title: 'Health features are life-changing', comment: 'ECG caught my afib episode early. Blood oxygen monitoring during sleep is incredibly useful.', createdAt: '2025-01-20', verified: true },
@@ -353,7 +353,7 @@ const baseProducts: Product[] = [
     slug: 'prism-sunglasses',
     description: 'Adaptive lenses that adjust to light conditions with UV400 protection and polarized coating. Lightweight titanium frame weighs just 22g. Anti-scratch, anti-fog, and anti-reflective coatings for crystal-clear vision.',
     shortDescription: 'Adaptive polarized titanium sunglasses',
-    price: 17900,
+    price: 179,
     brand: 'Ray-Ban',
     category: 'Accessories',
     subcategory: 'Sunglasses',
@@ -364,8 +364,8 @@ const baseProducts: Product[] = [
       { id: '12-2', url: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&h=600&fit=crop', alt: 'Prism Sunglasses side', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v12-1', name: 'Matte Black / Green', sku: 'PS-MBK-GR', price: 17900, stock: 20, color: 'Black', colorHex: '#111', images: [{ id: '12-1', url: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&h=600&fit=crop', alt: 'Black/Green', width: 600, height: 600 }] },
-      { id: 'v12-2', name: 'Gold / Brown', sku: 'PS-GLD-BR', price: 17900, stock: 14, color: 'Gold', colorHex: '#d4a574', images: [{ id: '12-2', url: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&h=600&fit=crop', alt: 'Gold/Brown', width: 600, height: 600 }] },
+      { id: 'v12-1', name: 'Matte Black / Green', sku: 'PS-MBK-GR', price: 179, stock: 20, color: 'Black', colorHex: '#111', images: [{ id: '12-1', url: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&h=600&fit=crop', alt: 'Black/Green', width: 600, height: 600 }] },
+      { id: 'v12-2', name: 'Gold / Brown', sku: 'PS-GLD-BR', price: 179, stock: 14, color: 'Gold', colorHex: '#d4a574', images: [{ id: '12-2', url: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&h=600&fit=crop', alt: 'Gold/Brown', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r12-1', userId: 'u23', userName: 'Tom A.', rating: 5, title: 'Best sunglasses I have owned', comment: 'Polarization is crystal clear. So lightweight you forget they are on. Adaptive lenses work great driving.', createdAt: '2025-03-01', verified: true },
@@ -381,7 +381,7 @@ const baseProducts: Product[] = [
     slug: 'flak-2-xl',
     description: 'Oakley performance sunglasses with Prizm lens technology that enhances contrast and visibility. O Matter frame is stress-resistant and lightweight. Unobtanium earsocks and nose pads grip better when wet.',
     shortDescription: 'Prizm lens sport sunglasses',
-    price: 16300,
+    price: 163,
     brand: 'Oakley',
     category: 'Accessories',
     subcategory: 'Sunglasses',
@@ -392,7 +392,7 @@ const baseProducts: Product[] = [
       { id: '13-2', url: 'https://images.unsplash.com/photo-1577803645773-f3de5750683d?w=600&h=600&fit=crop', alt: 'Flak 2.0 XL side', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v13-1', name: 'Matte Black / Prizm Black', sku: 'FL2-MBK-PB', price: 16300, stock: 16, color: 'Black', colorHex: '#111', images: [{ id: '13-1', url: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&h=600&fit=crop', alt: 'Black/Prizm', width: 600, height: 600 }] },
+      { id: 'v13-1', name: 'Matte Black / Prizm Black', sku: 'FL2-MBK-PB', price: 163, stock: 16, color: 'Black', colorHex: '#111', images: [{ id: '13-1', url: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&h=600&fit=crop', alt: 'Black/Prizm', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r13-1', userId: 'u24', userName: 'Ryan M.', rating: 4, title: 'Great for cycling', comment: 'Prizm Road lenses make a real difference. You can see road details much better.', createdAt: '2025-02-15', verified: true },
@@ -408,7 +408,7 @@ const baseProducts: Product[] = [
     slug: 'flux-backpack',
     description: 'Self-organizing 30L backpack with smart compartments and integrated USB-C charging port. Durable recycled nylon exterior with padded 16-inch laptop sleeve, hidden passport pocket, and water-resistant YKK zippers.',
     shortDescription: 'Smart 30L backpack with USB-C charging',
-    price: 14900,
+    price: 149,
     brand: 'North Face',
     category: 'Bags',
     subcategory: 'Backpacks',
@@ -420,8 +420,8 @@ const baseProducts: Product[] = [
       { id: '14-3', url: 'https://images.unsplash.com/photo-1622560480605-d83c85b753c2?w=600&h=600&fit=crop', alt: 'Flux Backpack side', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v14-1', name: 'Black', sku: 'FB-BLK', price: 14900, stock: 30, color: 'Black', colorHex: '#111', images: [{ id: '14-1', url: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=600&fit=crop', alt: 'Black', width: 600, height: 600 }] },
-      { id: 'v14-2', name: 'Navajo White', sku: 'FB-NJW', price: 14900, stock: 12, color: 'Cream', colorHex: '#f5f0e8', images: [{ id: '14-2', url: 'https://images.unsplash.com/photo-1581605405669-fcdf81165a66?w=600&h=600&fit=crop', alt: 'Cream', width: 600, height: 600 }] },
+      { id: 'v14-1', name: 'Black', sku: 'FB-BLK', price: 149, stock: 30, color: 'Black', colorHex: '#111', images: [{ id: '14-1', url: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=600&fit=crop', alt: 'Black', width: 600, height: 600 }] },
+      { id: 'v14-2', name: 'Navajo White', sku: 'FB-NJW', price: 149, stock: 12, color: 'Cream', colorHex: '#f5f0e8', images: [{ id: '14-2', url: 'https://images.unsplash.com/photo-1581605405669-fcdf81165a66?w=600&h=600&fit=crop', alt: 'Cream', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r14-1', userId: 'u25', userName: 'Priya S.', rating: 5, title: 'Perfect travel backpack', comment: 'Everything has its place. USB-C charging saved me at the airport. Fits under airline seats easily.', createdAt: '2025-01-18', verified: true },
@@ -438,7 +438,7 @@ const baseProducts: Product[] = [
     slug: 'trail-backpack-28l',
     description: 'Lightweight and durable daypack for trail or town.Made with 100% recycled materials. Features a padded laptop sleeve, water bottle pockets, and an integrated rain cover. Comfortable back panel with airflow channels.',
     shortDescription: 'Recycled trail daypack with rain cover',
-    price: 9900,
+    price: 99,
     brand: 'Patagonia',
     category: 'Bags',
     subcategory: 'Backpacks',
@@ -449,8 +449,8 @@ const baseProducts: Product[] = [
       { id: '15-2', url: 'https://images.unsplash.com/photo-1622560480605-d83c85b753c2?w=600&h=600&fit=crop', alt: 'Trail Backpack side', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v15-1', name: 'Forge Grey', sku: 'TB-FGR', price: 9900, stock: 35, color: 'Gray', colorHex: '#6b7280', images: [{ id: '15-1', url: 'https://images.unsplash.com/photo-1581605405669-fcdf81165a66?w=600&h=600&fit=crop', alt: 'Forge Grey', width: 600, height: 600 }] },
-      { id: 'v15-2', name: 'Black', sku: 'TB-BLK', price: 9900, stock: 28, color: 'Black', colorHex: '#111', images: [{ id: '15-1', url: 'https://images.unsplash.com/photo-1581605405669-fcdf81165a66?w=600&h=600&fit=crop', alt: 'Black', width: 600, height: 600 }] },
+      { id: 'v15-1', name: 'Forge Grey', sku: 'TB-FGR', price: 99, stock: 35, color: 'Gray', colorHex: '#6b7280', images: [{ id: '15-1', url: 'https://images.unsplash.com/photo-1581605405669-fcdf81165a66?w=600&h=600&fit=crop', alt: 'Forge Grey', width: 600, height: 600 }] },
+      { id: 'v15-2', name: 'Black', sku: 'TB-BLK', price: 99, stock: 28, color: 'Black', colorHex: '#111', images: [{ id: '15-1', url: 'https://images.unsplash.com/photo-1581605405669-fcdf81165a66?w=600&h=600&fit=crop', alt: 'Black', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r15-1', userId: 'u27', userName: 'Nina W.', rating: 4, title: 'Great day pack', comment: 'Perfect for day hikes. Rain cover is a nice bonus. Recycled material feels surprisingly tough.', createdAt: '2025-01-05', verified: true },
@@ -466,7 +466,7 @@ const baseProducts: Product[] = [
     slug: 'classic-leather-boot',
     description: 'Premium full-grain leather boots with Goodyear welt construction for decades of wear. Cork-cushioned midsole molds to your foot over time. Antiqued brass hardware and a slip-resistant outsole. Handcrafted in the USA.',
     shortDescription: 'Handcrafted full-grain leather boots',
-    price: 22900,
+    price: 229,
     brand: 'New Balance',
     category: 'Footwear',
     subcategory: 'Boots',
@@ -478,9 +478,9 @@ const baseProducts: Product[] = [
       { id: '16-3', url: 'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=600&h=600&fit=crop', alt: 'Classic Boot detail', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v16-1', name: 'Brown / 9', sku: 'CLB-BRN-9', price: 22900, stock: 8, size: '9', color: 'Brown', colorHex: '#92400e', images: [{ id: '16-1', url: 'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=600&h=600&fit=crop', alt: 'Brown 9', width: 600, height: 600 }] },
-      { id: 'v16-2', name: 'Brown / 10', sku: 'CLB-BRN-10', price: 22900, stock: 6, size: '10', color: 'Brown', colorHex: '#92400e', images: [{ id: '16-1', url: 'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=600&h=600&fit=crop', alt: 'Brown 10', width: 600, height: 600 }] },
-      { id: 'v16-3', name: 'Black / 10', sku: 'CLB-BLK-10', price: 22900, stock: 5, size: '10', color: 'Black', colorHex: '#111', images: [{ id: '16-2', url: 'https://images.unsplash.com/photo-1605812858837-18c975f1d5c5?w=600&h=600&fit=crop', alt: 'Black 10', width: 600, height: 600 }] },
+      { id: 'v16-1', name: 'Brown / 9', sku: 'CLB-BRN-9', price: 229, stock: 8, size: '9', color: 'Brown', colorHex: '#92400e', images: [{ id: '16-1', url: 'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=600&h=600&fit=crop', alt: 'Brown 9', width: 600, height: 600 }] },
+      { id: 'v16-2', name: 'Brown / 10', sku: 'CLB-BRN-10', price: 229, stock: 6, size: '10', color: 'Brown', colorHex: '#92400e', images: [{ id: '16-1', url: 'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=600&h=600&fit=crop', alt: 'Brown 10', width: 600, height: 600 }] },
+      { id: 'v16-3', name: 'Black / 10', sku: 'CLB-BLK-10', price: 229, stock: 5, size: '10', color: 'Black', colorHex: '#111', images: [{ id: '16-2', url: 'https://images.unsplash.com/photo-1605812858837-18c975f1d5c5?w=600&h=600&fit=crop', alt: 'Black 10', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r16-1', userId: 'u28', userName: 'Carlos M.', rating: 5, title: 'Boots for life', comment: 'Goodyear welt means these can be resoled forever. Broke in after 2 weeks. Worth every penny.', createdAt: '2025-03-10', verified: true },
@@ -497,7 +497,7 @@ const baseProducts: Product[] = [
     slug: '990v6-heritage',
     description: 'The iconic 990 series continues with the v6. Made in the USA with premium pigskin and mesh upper. ENCAP midsole technology combines lightweight foam with a durable rim for all-day support. The sneaker that defined dad shoes.',
     shortDescription: 'Made in USA heritage running shoe',
-    price: 19900,
+    price: 199,
     brand: 'New Balance',
     category: 'Footwear',
     subcategory: 'Sneakers',
@@ -508,9 +508,9 @@ const baseProducts: Product[] = [
       { id: '17-2', url: 'https://images.unsplash.com/photo-1584735175315-9d5df9b77e79?w=600&h=600&fit=crop', alt: '990v6 side', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v17-1', name: 'Grey / 9', sku: '990-GRY-9', price: 19900, stock: 7, size: '9', color: 'Gray', colorHex: '#6b7280', images: [{ id: '17-1', url: 'https://images.unsplash.com/photo-1595950653106-4c717e2be3d4?w=600&h=600&fit=crop', alt: 'Grey 9', width: 600, height: 600 }] },
-      { id: 'v17-2', name: 'Grey / 10', sku: '990-GRY-10', price: 19900, stock: 5, size: '10', color: 'Gray', colorHex: '#6b7280', images: [{ id: '17-1', url: 'https://images.unsplash.com/photo-1595950653106-4c717e2be3d4?w=600&h=600&fit=crop', alt: 'Grey 10', width: 600, height: 600 }] },
-      { id: 'v17-3', name: 'Grey / 11', sku: '990-GRY-11', price: 19900, stock: 4, size: '11', color: 'Gray', colorHex: '#6b7280', images: [{ id: '17-1', url: 'https://images.unsplash.com/photo-1595950653106-4c717e2be3d4?w=600&h=600&fit=crop', alt: 'Grey 11', width: 600, height: 600 }] },
+      { id: 'v17-1', name: 'Grey / 9', sku: '990-GRY-9', price: 199, stock: 7, size: '9', color: 'Gray', colorHex: '#6b7280', images: [{ id: '17-1', url: 'https://images.unsplash.com/photo-1595950653106-4c717e2be3d4?w=600&h=600&fit=crop', alt: 'Grey 9', width: 600, height: 600 }] },
+      { id: 'v17-2', name: 'Grey / 10', sku: '990-GRY-10', price: 199, stock: 5, size: '10', color: 'Gray', colorHex: '#6b7280', images: [{ id: '17-1', url: 'https://images.unsplash.com/photo-1595950653106-4c717e2be3d4?w=600&h=600&fit=crop', alt: 'Grey 10', width: 600, height: 600 }] },
+      { id: 'v17-3', name: 'Grey / 11', sku: '990-GRY-11', price: 199, stock: 4, size: '11', color: 'Gray', colorHex: '#6b7280', images: [{ id: '17-1', url: 'https://images.unsplash.com/photo-1595950653106-4c717e2be3d4?w=600&h=600&fit=crop', alt: 'Grey 11', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r17-1', userId: 'u30', userName: 'Leo F.', rating: 5, title: 'Timeless classic', comment: 'The 990 never goes out of style. Made in USA quality you can feel. My 4th pair over the years.', createdAt: '2025-02-28', verified: true },
@@ -526,8 +526,8 @@ const baseProducts: Product[] = [
     slug: 'hovr-phantom-3',
     description: 'Under Armour connected running shoe with HOVR cushioning that provides a zero-gravity feel to keep you moving forward. UA Record Sensor tracks all running metrics and connects to MapMyRun.',
     shortDescription: 'Connected running shoe with zero-gravity feel',
-    price: 15900,
-    salePrice: 11900,
+    price: 159,
+    salePrice: 119,
     brand: 'Under Armour',
     category: 'Footwear',
     subcategory: 'Sneakers',
@@ -538,8 +538,8 @@ const baseProducts: Product[] = [
       { id: '18-2', url: 'https://images.unsplash.com/photo-1600185365483-26d7a4d0883e?w=600&h=600&fit=crop', alt: 'HOVR Phantom 3 side', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v18-1', name: 'Black / 10', sku: 'HP3-BLK-10', price: 15900, salePrice: 11900, stock: 14, size: '10', color: 'Black', colorHex: '#111', images: [{ id: '18-1', url: 'https://images.unsplash.com/photo-1584735175315-9d5df9b77e79?w=600&h=600&fit=crop', alt: 'Black 10', width: 600, height: 600 }] },
-      { id: 'v18-2', name: 'White / 10', sku: 'HP3-WHT-10', price: 15900, salePrice: 11900, stock: 9, size: '10', color: 'White', colorHex: '#f8f8f8', images: [{ id: '18-2', url: 'https://images.unsplash.com/photo-1600185365483-26d7a4d0883e?w=600&h=600&fit=crop', alt: 'White 10', width: 600, height: 600 }] },
+      { id: 'v18-1', name: 'Black / 10', sku: 'HP3-BLK-10', price: 159, salePrice: 119, stock: 14, size: '10', color: 'Black', colorHex: '#111', images: [{ id: '18-1', url: 'https://images.unsplash.com/photo-1584735175315-9d5df9b77e79?w=600&h=600&fit=crop', alt: 'Black 10', width: 600, height: 600 }] },
+      { id: 'v18-2', name: 'White / 10', sku: 'HP3-WHT-10', price: 159, salePrice: 119, stock: 9, size: '10', color: 'White', colorHex: '#f8f8f8', images: [{ id: '18-2', url: 'https://images.unsplash.com/photo-1600185365483-26d7a4d0883e?w=600&h=600&fit=crop', alt: 'White 10', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r18-1', userId: 'u31', userName: 'Marcus L.', rating: 4, title: 'Great running shoe', comment: 'HOVR cushioning really does feel zero gravity. Connected features via MapMyRun are a nice touch.', createdAt: '2025-01-12', verified: true },
@@ -555,7 +555,7 @@ const baseProducts: Product[] = [
     slug: 'retro-1-high-og',
     description: 'The shoe that started it all. Air Jordan 1 Retro High OG features genuine leather construction, Nike Air cushioning, and the iconic Wings logo. A piece of basketball history with timeless street style.',
     shortDescription: 'Iconic original Air Jordan silhouette',
-    price: 18000,
+    price: 180,
     brand: 'Jordan',
     category: 'Footwear',
     subcategory: 'Sneakers',
@@ -567,9 +567,9 @@ const baseProducts: Product[] = [
       { id: '19-3', url: 'https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=600&h=600&fit=crop', alt: 'Retro 1 High detail', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v19-1', name: 'Chicago / 10', sku: 'R1-CHI-10', price: 18000, stock: 3, size: '10', color: 'Red', colorHex: '#dc2626', images: [{ id: '19-1', url: 'https://images.unsplash.com/photo-1600185365483-26d7a4d0883e?w=600&h=600&fit=crop', alt: 'Chicago 10', width: 600, height: 600 }] },
-      { id: 'v19-2', name: 'Royal Blue / 10', sku: 'R1-RBL-10', price: 18000, stock: 5, size: '10', color: 'Blue', colorHex: '#3b82f6', images: [{ id: '19-2', url: 'https://images.unsplash.com/photo-1597045566677-8cf032ed6634?w=600&h=600&fit=crop', alt: 'Royal Blue 10', width: 600, height: 600 }] },
-      { id: 'v19-3', name: 'Bred / 11', sku: 'R1-BRD-11', price: 18000, stock: 2, size: '11', color: 'Black', colorHex: '#111', images: [{ id: '19-1', url: 'https://images.unsplash.com/photo-1600185365483-26d7a4d0883e?w=600&h=600&fit=crop', alt: 'Bred 11', width: 600, height: 600 }] },
+      { id: 'v19-1', name: 'Chicago / 10', sku: 'R1-CHI-10', price: 180, stock: 3, size: '10', color: 'Red', colorHex: '#dc2626', images: [{ id: '19-1', url: 'https://images.unsplash.com/photo-1600185365483-26d7a4d0883e?w=600&h=600&fit=crop', alt: 'Chicago 10', width: 600, height: 600 }] },
+      { id: 'v19-2', name: 'Royal Blue / 10', sku: 'R1-RBL-10', price: 180, stock: 5, size: '10', color: 'Blue', colorHex: '#3b82f6', images: [{ id: '19-2', url: 'https://images.unsplash.com/photo-1597045566677-8cf032ed6634?w=600&h=600&fit=crop', alt: 'Royal Blue 10', width: 600, height: 600 }] },
+      { id: 'v19-3', name: 'Bred / 11', sku: 'R1-BRD-11', price: 180, stock: 2, size: '11', color: 'Black', colorHex: '#111', images: [{ id: '19-1', url: 'https://images.unsplash.com/photo-1600185365483-26d7a4d0883e?w=600&h=600&fit=crop', alt: 'Bred 11', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r19-1', userId: 'u32', userName: 'DeShawn J.', rating: 5, title: 'Grail status', comment: 'Finally copped the Chicagos. Quality is incredible. Leather is buttery smooth. A real collector piece.', createdAt: '2025-02-14', verified: true },
@@ -586,7 +586,7 @@ const baseProducts: Product[] = [
     slug: 'suede-classic',
     description: 'The Puma Suede has been a streetwear icon since 1968. Premium suede upper with a clean silhouette. The rubber outsole provides excellent grip and the formstrip is instantly recognizable worldwide.',
     shortDescription: 'Iconic streetwear suede sneaker since 1968',
-    price: 8500,
+    price: 85,
     brand: 'Puma',
     category: 'Footwear',
     subcategory: 'Sneakers',
@@ -597,9 +597,9 @@ const baseProducts: Product[] = [
       { id: '20-2', url: 'https://images.unsplash.com/photo-1608231387042-66d030c71347?w=600&h=600&fit=crop', alt: 'Suede Classic side', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v20-1', name: 'Black / 9', sku: 'SC-BLK-9', price: 8500, stock: 30, size: '9', color: 'Black', colorHex: '#111', images: [{ id: '20-1', url: 'https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=600&h=600&fit=crop', alt: 'Black 9', width: 600, height: 600 }] },
-      { id: 'v20-2', name: 'Black / 10', sku: 'SC-BLK-10', price: 8500, stock: 25, size: '10', color: 'Black', colorHex: '#111', images: [{ id: '20-1', url: 'https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=600&h=600&fit=crop', alt: 'Black 10', width: 600, height: 600 }] },
-      { id: 'v20-3', name: 'Navy / 10', sku: 'SC-NVY-10', price: 8500, stock: 20, size: '10', color: 'Navy', colorHex: '#1e3a5f', images: [{ id: '20-2', url: 'https://images.unsplash.com/photo-1608231387042-66d030c71347?w=600&h=600&fit=crop', alt: 'Navy 10', width: 600, height: 600 }] },
+      { id: 'v20-1', name: 'Black / 9', sku: 'SC-BLK-9', price: 85, stock: 30, size: '9', color: 'Black', colorHex: '#111', images: [{ id: '20-1', url: 'https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=600&h=600&fit=crop', alt: 'Black 9', width: 600, height: 600 }] },
+      { id: 'v20-2', name: 'Black / 10', sku: 'SC-BLK-10', price: 85, stock: 25, size: '10', color: 'Black', colorHex: '#111', images: [{ id: '20-1', url: 'https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=600&h=600&fit=crop', alt: 'Black 10', width: 600, height: 600 }] },
+      { id: 'v20-3', name: 'Navy / 10', sku: 'SC-NVY-10', price: 85, stock: 20, size: '10', color: 'Navy', colorHex: '#1e3a5f', images: [{ id: '20-2', url: 'https://images.unsplash.com/photo-1608231387042-66d030c71347?w=600&h=600&fit=crop', alt: 'Navy 10', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r20-1', userId: 'u34', userName: 'Tyler R.', rating: 4, title: 'Classic at a great price', comment: 'You cannot go wrong with the Suede. Simple, stylish, and affordable. Suede picks up dirt though.', createdAt: '2025-01-08', verified: true },
@@ -615,7 +615,7 @@ const baseProducts: Product[] = [
     slug: '501-original-fit-jeans',
     description: 'The original jean since 1873. The 501 is the jean that started it all and has been a cultural icon for over 150 years. Mid-rise, straight leg, button fly. 100% cotton denim that gets better with every wear.',
     shortDescription: 'The original jean since 1873',
-    price: 8900,
+    price: 89,
     brand: "Levi's",
     category: 'Apparel',
     subcategory: 'Jeans',
@@ -626,9 +626,9 @@ const baseProducts: Product[] = [
       { id: '21-2', url: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3b68?w=600&h=600&fit=crop', alt: '501 Jeans detail', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v21-1', name: 'Stonewash / 30x30', sku: '501-SW-30', price: 8900, stock: 40, size: '30', color: 'Blue', colorHex: '#60a5fa', images: [{ id: '21-1', url: 'https://images.unsplash.com/photo-1542272604-99787a837e4c?w=600&h=600&fit=crop', alt: 'Stonewash 30', width: 600, height: 600 }] },
-      { id: 'v21-2', name: 'Stonewash / 32x30', sku: '501-SW-32', price: 8900, stock: 35, size: '32', color: 'Blue', colorHex: '#60a5fa', images: [{ id: '21-1', url: 'https://images.unsplash.com/photo-1542272604-99787a837e4c?w=600&h=600&fit=crop', alt: 'Stonewash 32', width: 600, height: 600 }] },
-      { id: 'v21-3', name: 'Black / 32x30', sku: '501-BLK-32', price: 8900, stock: 28, size: '32', color: 'Black', colorHex: '#111', images: [{ id: '21-2', url: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3b68?w=600&h=600&fit=crop', alt: 'Black 32', width: 600, height: 600 }] },
+      { id: 'v21-1', name: 'Stonewash / 30x30', sku: '501-SW-30', price: 89, stock: 40, size: '30', color: 'Blue', colorHex: '#60a5fa', images: [{ id: '21-1', url: 'https://images.unsplash.com/photo-1542272604-99787a837e4c?w=600&h=600&fit=crop', alt: 'Stonewash 30', width: 600, height: 600 }] },
+      { id: 'v21-2', name: 'Stonewash / 32x30', sku: '501-SW-32', price: 89, stock: 35, size: '32', color: 'Blue', colorHex: '#60a5fa', images: [{ id: '21-1', url: 'https://images.unsplash.com/photo-1542272604-99787a837e4c?w=600&h=600&fit=crop', alt: 'Stonewash 32', width: 600, height: 600 }] },
+      { id: 'v21-3', name: 'Black / 32x30', sku: '501-BLK-32', price: 89, stock: 28, size: '32', color: 'Black', colorHex: '#111', images: [{ id: '21-2', url: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3b68?w=600&h=600&fit=crop', alt: 'Black 32', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r21-1', userId: 'u35', userName: 'Diego V.', rating: 5, title: 'Never going back', comment: 'Bought my first pair 5 years ago and they only got better. Just bought my 3rd pair. Timeless.', createdAt: '2025-02-18', verified: true },
@@ -644,7 +644,7 @@ const baseProducts: Product[] = [
     slug: 'orbit-smart-ring',
     description: 'Advanced health tracking in a sleek titanium ring. Sleep analysis, heart rate monitoring, blood oxygen, and body temperature sensing. 7-day battery life with wireless charging. Water-resistant to 100m.',
     shortDescription: 'Titanium smart ring with health tracking',
-    price: 29900,
+    price: 299,
     brand: 'Apple',
     category: 'Accessories',
     subcategory: 'Wearables',
@@ -655,9 +655,9 @@ const baseProducts: Product[] = [
       { id: '22-2', url: 'https://images.unsplash.com/photo-1603560739443-0f9f5ea5c3c4?w=600&h=600&fit=crop', alt: 'Orbit Ring on finger', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v22-1', name: 'Brushed Silver / 9', sku: 'OR-SLV-9', price: 29900, stock: 12, size: '9', color: 'Silver', colorHex: '#c0c0c0', images: [{ id: '22-1', url: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=600&fit=crop', alt: 'Silver 9', width: 600, height: 600 }] },
-      { id: 'v22-2', name: 'Matte Black / 10', sku: 'OR-MBK-10', price: 29900, stock: 8, size: '10', color: 'Black', colorHex: '#1a1a1a', images: [{ id: '22-2', url: 'https://images.unsplash.com/photo-1603560739443-0f9f5ea5c3c4?w=600&h=600&fit=crop', alt: 'Black 10', width: 600, height: 600 }] },
-      { id: 'v22-3', name: 'Gold / 9', sku: 'OR-GLD-9', price: 32900, stock: 6, size: '9', color: 'Gold', colorHex: '#d4a574', images: [{ id: '22-1', url: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=600&fit=crop', alt: 'Gold 9', width: 600, height: 600 }] },
+      { id: 'v22-1', name: 'Brushed Silver / 9', sku: 'OR-SLV-9', price: 299, stock: 12, size: '9', color: 'Silver', colorHex: '#c0c0c0', images: [{ id: '22-1', url: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=600&fit=crop', alt: 'Silver 9', width: 600, height: 600 }] },
+      { id: 'v22-2', name: 'Matte Black / 10', sku: 'OR-MBK-10', price: 299, stock: 8, size: '10', color: 'Black', colorHex: '#1a1a1a', images: [{ id: '22-2', url: 'https://images.unsplash.com/photo-1603560739443-0f9f5ea5c3c4?w=600&h=600&fit=crop', alt: 'Black 10', width: 600, height: 600 }] },
+      { id: 'v22-3', name: 'Gold / 9', sku: 'OR-GLD-9', price: 329, stock: 6, size: '9', color: 'Gold', colorHex: '#d4a574', images: [{ id: '22-1', url: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=600&fit=crop', alt: 'Gold 9', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r22-1', userId: 'u36', userName: 'Sophie T.', rating: 4, title: 'Sleep tracking actually works', comment: 'Much more comfortable than a watch for sleep. Data matches my Oura ring. Battery lasts a full week.', createdAt: '2025-02-05', verified: true },
@@ -673,7 +673,7 @@ const baseProducts: Product[] = [
     slug: 'macbook-air-m4',
     description: 'Strikingly thin with the powerful M4 chip. 13.6-inch Liquid Retina display with 500 nits brightness. 18-hour battery life, 16GB unified memory, and a fanless design that stays silent. Midnight color with anodized aluminum finish.',
     shortDescription: 'M4 chip with 18-hour battery life',
-    price: 119900,
+    price: 1199,
     brand: 'Apple',
     category: 'Electronics',
     subcategory: 'Laptops',
@@ -685,8 +685,8 @@ const baseProducts: Product[] = [
       { id: '23-3', url: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=600&h=600&fit=crop', alt: 'MacBook Air M4 detail', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v23-1', name: 'Midnight / 16GB / 256GB', sku: 'MBA-M4-MD-256', price: 119900, stock: 11, size: '256GB', color: 'Midnight', colorHex: '#1e293b', images: [{ id: '23-1', url: 'https://images.unsplash.com/photo-1517336714731-4898ebb3ac22?w=600&h=600&fit=crop', alt: 'Midnight 256GB', width: 600, height: 600 }] },
-      { id: 'v23-2', name: 'Starlight / 16GB / 512GB', sku: 'MBA-M4-SL-512', price: 139900, stock: 7, size: '512GB', color: 'Gold', colorHex: '#d4a574', images: [{ id: '23-2', url: 'https://images.unsplash.com/photo-1611186871344-b1ceafd6b69a?w=600&h=600&fit=crop', alt: 'Starlight 512GB', width: 600, height: 600 }] },
+      { id: 'v23-1', name: 'Midnight / 16GB / 256GB', sku: 'MBA-M4-MD-256', price: 1199, stock: 11, size: '256GB', color: 'Midnight', colorHex: '#1e293b', images: [{ id: '23-1', url: 'https://images.unsplash.com/photo-1517336714731-4898ebb3ac22?w=600&h=600&fit=crop', alt: 'Midnight 256GB', width: 600, height: 600 }] },
+      { id: 'v23-2', name: 'Starlight / 16GB / 512GB', sku: 'MBA-M4-SL-512', price: 1399, stock: 7, size: '512GB', color: 'Gold', colorHex: '#d4a574', images: [{ id: '23-2', url: 'https://images.unsplash.com/photo-1611186871344-b1ceafd6b69a?w=600&h=600&fit=crop', alt: 'Starlight 512GB', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r23-1', userId: 'u37', userName: 'Sarah L.', rating: 5, title: 'Best laptop I have ever used', comment: 'M4 chip is insanely fast. Battery lasts my entire workday plus the evening. Silent and beautiful.', createdAt: '2025-03-08', verified: true },
@@ -703,7 +703,7 @@ const baseProducts: Product[] = [
     slug: 'galaxy-tab-s10-ultra',
     description: 'The biggest Galaxy Tab with a massive 14.6-inch Dynamic AMOLED display. Powered by MediaTek Dimensity 9300+ for desktop-level performance. S Pen included. Galaxy AI features like Note Assist and Circle to Search.',
     shortDescription: '14.6-inch AMOLED with S Pen & Galaxy AI',
-    price: 119900,
+    price: 1199,
     brand: 'Samsung',
     category: 'Electronics',
     subcategory: 'Tablets',
@@ -714,8 +714,8 @@ const baseProducts: Product[] = [
       { id: '24-2', url: 'https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=600&h=600&fit=crop', alt: 'Galaxy Tab S10 Ultra with S Pen', width: 600, height: 600 },
     ],
     variants: [
-      { id: 'v24-1', name: 'Gray / 256GB', sku: 'GT10U-GR-256', price: 119900, stock: 9, size: '256GB', color: 'Gray', colorHex: '#6b7280', images: [{ id: '24-1', url: 'https://images.unsplash.com/photo-1544244015-0df4b5089a64?w=600&h=600&fit=crop', alt: 'Gray 256GB', width: 600, height: 600 }] },
-      { id: 'v24-2', name: 'Gray / 512GB', sku: 'GT10U-GR-512', price: 139900, stock: 5, size: '512GB', color: 'Gray', colorHex: '#6b7280', images: [{ id: '24-1', url: 'https://images.unsplash.com/photo-1544244015-0df4b5089a64?w=600&h=600&fit=crop', alt: 'Gray 512GB', width: 600, height: 600 }] },
+      { id: 'v24-1', name: 'Gray / 256GB', sku: 'GT10U-GR-256', price: 1199, stock: 9, size: '256GB', color: 'Gray', colorHex: '#6b7280', images: [{ id: '24-1', url: 'https://images.unsplash.com/photo-1544244015-0df4b5089a64?w=600&h=600&fit=crop', alt: 'Gray 256GB', width: 600, height: 600 }] },
+      { id: 'v24-2', name: 'Gray / 512GB', sku: 'GT10U-GR-512', price: 1399, stock: 5, size: '512GB', color: 'Gray', colorHex: '#6b7280', images: [{ id: '24-1', url: 'https://images.unsplash.com/photo-1544244015-0df4b5089a64?w=600&h=600&fit=crop', alt: 'Gray 512GB', width: 600, height: 600 }] },
     ],
     reviews: [
       { id: 'r24-1', userId: 'u39', userName: 'Hassan A.', rating: 4, title: 'Almost replaced my laptop', comment: 'Great for drawing with S Pen and media consumption. Galaxy AI transcription is surprisingly useful.', createdAt: '2025-01-30', verified: true },
@@ -738,19 +738,19 @@ export const mockBrands = [
 export const mockCategories = ['Footwear', 'Outerwear', 'Accessories', 'Electronics', 'Bags', 'Apparel'];
 
 export const promoCodes: PromoCode[] = [
-  { code: 'WELCOME10', description: '10% off your first order', discountPercent: 10, minPurchaseCents: 5000, maxUses: 1000, usedCount: 342, active: true },
-  { code: 'SAVE20', description: '20% off orders over $100', discountPercent: 20, minPurchaseCents: 10000, maxUses: 500, usedCount: 89, active: true },
-  { code: 'FREESHIP', description: 'Free shipping on any order', discountPercent: 0, minPurchaseCents: 0, maxUses: 2000, usedCount: 567, active: true },
-  { code: 'SUMMER25', description: '25% off summer collection', discountPercent: 25, minPurchaseCents: 15000, maxUses: 300, usedCount: 156, active: true },
-  { code: 'EXPIRED', description: 'Old promo', discountPercent: 15, minPurchaseCents: 0, maxUses: 10, usedCount: 10, active: false },
+  { code: 'WELCOME10', description: '10% off your first order', discountPercent: 10, minPurchase: 50, maxUses: 1000, usedCount: 342, active: true },
+  { code: 'SAVE20', description: '20% off orders over $100', discountPercent: 20, minPurchase: 100, maxUses: 500, usedCount: 89, active: true },
+  { code: 'FREESHIP', description: 'Free shipping on any order', discountPercent: 0, minPurchase: 0, maxUses: 2000, usedCount: 567, active: true },
+  { code: 'SUMMER25', description: '25% off summer collection', discountPercent: 25, minPurchase: 150, maxUses: 300, usedCount: 156, active: true },
+  { code: 'EXPIRED', description: 'Old promo', discountPercent: 15, minPurchase: 0, maxUses: 10, usedCount: 10, active: false },
 ];
 
-export function validatePromoCode(code: string, cartTotalCents: number): { valid: boolean; promo?: PromoCode; error?: string } {
+export function validatePromoCode(code: string, cartTotal: number): { valid: boolean; promo?: PromoCode; error?: string } {
   const promo = promoCodes.find((p) => p.code.toLowerCase() === code.toLowerCase());
   if (!promo) return { valid: false, error: 'Invalid promo code' };
   if (!promo.active) return { valid: false, error: 'This promo code is no longer active' };
   if (promo.usedCount >= promo.maxUses) return { valid: false, error: 'This promo code has reached its usage limit' };
-  if (cartTotalCents < promo.minPurchaseCents) return { valid: false, error: `Minimum purchase of $${(promo.minPurchaseCents / 100).toFixed(2)} required` };
+  if (cartTotal < promo.minPurchase) return { valid: false, error: `Minimum purchase of $${promo.minPurchase.toFixed(2)} required` };
   return { valid: true, promo };
 }
 

@@ -1,8 +1,8 @@
-export function formatPrice(cents: number): string {
+export function formatPrice(value: number): string {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-  }).format(cents / 100);
+  }).format(value);
 }
 
 export function cn(...classes: (string | boolean | undefined | null)[]): string {

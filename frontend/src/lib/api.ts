@@ -17,11 +17,45 @@ const api = axios.create({
   },
 });
 
-api.interceptors.request.use((config) => {
+let csrfReady: Promise<void> | null = null;
+
+function csrfCookieUrl(): string {
+  return `${getBaseURL().replace(/\/api$/, '')}/sanctum/csrf-cookie`;
+}
+
+function ensureCsrfCookie(): Promise<void> {
+  if (typeof window === 'undefined') return Promise.resolve();
+  if (!csrfReady) {
+    csrfReady = axios
+      .get(csrfCookieUrl(), { withCredentials: true })
+      .then(() => {})
+      .catch(() => {})
+      .finally(() => {
+        csrfReady = null;
+      });
+  }
+  return csrfReady;
+}
+
+function getXsrfToken(): string | null {
+  if (typeof document === 'undefined') return null;
+  const match = document.cookie.match(/(?:^|;\s*)XSRF-TOKEN=([^;]*)/);
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
+api.interceptors.request.use(async (config) => {
   if (typeof window !== 'undefined') {
     const token = localStorage.getItem('accessToken');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
+    }
+    const method = (config.method || 'get').toLowerCase();
+    if (method !== 'get' && method !== 'head' && method !== 'options') {
+      await ensureCsrfCookie();
+      const xsrf = getXsrfToken();
+      if (xsrf) {
+        config.headers['X-XSRF-TOKEN'] = xsrf;
+      }
     }
   }
   return config;
@@ -48,10 +82,7 @@ api.interceptors.response.use(
       try {
         const refreshToken = localStorage.getItem('refreshToken');
         if (refreshToken) {
-          const { data } = await axios.post(
-            `${api.defaults.baseURL}/auth/refresh`,
-            { refreshToken }
-          );
+          const { data } = await api.post('/auth/refresh', { refreshToken });
           localStorage.setItem('accessToken', data.accessToken);
           localStorage.setItem('refreshToken', data.refreshToken);
           originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;

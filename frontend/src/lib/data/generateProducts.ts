@@ -102,7 +102,7 @@ export function generateExtendedProducts(): Product[] {
         const modelName = namePool[(i + brands.indexOf(brand) * 2) % namePool.length];
         const name = `${brand} ${modelName}`;
         const slug = `${brand.toLowerCase().replace(/['\s]+/g, '-')}-${modelName.toLowerCase()}-${id}`;
-        const basePrice = 3000 + (i + brands.indexOf(brand)) * 800;
+        const basePrice = 30 + (i + brands.indexOf(brand)) * 8;
         const price = category === 'Electronics' ? basePrice * 4 : category === 'Outerwear' ? basePrice * 2 : basePrice;
         const salePrice = i % 3 === 0 ? Math.round(price * 0.85) : undefined;
 

@@ -12,6 +12,7 @@ import { useAuthStore } from '@/stores/useAuthStore';
 import { useUIStore } from '@/stores/useUIStore';
 import { ShippingAddress } from '@/types/order';
 import api from '@/lib/api';
+import { formatPrice } from '@/lib/utils';
 
 const steps = ['Shipping', 'Payment', 'Review'];
 
@@ -206,7 +207,7 @@ export default function CheckoutPage() {
                     {cart.items.map((item) => (
                       <div key={item.id} className="flex justify-between text-sm py-1 text-gray-700 dark:text-gray-300">
                         <span>{item.product.name} x{item.quantity}</span>
-                        <span>₹{((item.variant.salePrice || item.variant.price) * item.quantity / 100).toFixed(2)}</span>
+                        <span>{formatPrice((item.variant.salePrice || item.variant.price) * item.quantity)}</span>
                       </div>
                     ))}
                   </div>

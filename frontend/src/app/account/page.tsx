@@ -11,21 +11,21 @@ const mockOrders = [
     id: 'ORD-2024-001',
     date: '2024-12-15',
     status: 'Delivered',
-    total: 24999,
+    total: 249.99,
     items: [{ name: 'Wireless Headphones', qty: 1 }],
   },
   {
     id: 'ORD-2024-002',
     date: '2024-12-28',
     status: 'Shipped',
-    total: 18999,
+    total: 189.99,
     items: [{ name: 'Running Shoes', qty: 1 }, { name: 'Athletic Socks', qty: 2 }],
   },
   {
     id: 'ORD-2025-003',
     date: '2025-01-10',
     status: 'Processing',
-    total: 5499,
+    total: 54.99,
     items: [{ name: 'Phone Case', qty: 1 }],
   },
 ];
@@ -118,7 +118,7 @@ export default function AccountPage() {
                   </div>
                   <div className="text-right">
                     <p className="font-medium text-gray-900 dark:text-white">
-                      ${(order.total / 100).toFixed(2)}
+                      ${order.total.toFixed(2)}
                     </p>
                     <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${statusColors[order.status] || ''}`}>
                       {order.status}

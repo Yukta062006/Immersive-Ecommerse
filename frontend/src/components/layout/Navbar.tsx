@@ -58,6 +58,11 @@ export default function Navbar() {
             <Link href="/products?sale=true" className="text-sm font-medium text-red-500 hover:text-red-600 transition-colors">
               Sale
             </Link>
+            {user?.role === 'admin' && (
+              <Link href="/admin" className="text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors">
+                Admin
+              </Link>
+            )}
           </div>
 
           {/* Search */}
@@ -200,6 +205,11 @@ export default function Navbar() {
               <Link href="/products?sale=true" onClick={() => setMobileMenuOpen(false)} className="block text-sm font-medium text-red-500 hover:text-red-600 py-2">
                 Sale
               </Link>
+              {user?.role === 'admin' && (
+                <Link href="/admin" onClick={() => setMobileMenuOpen(false)} className="block text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 py-2">
+                  Admin
+                </Link>
+              )}
             </div>
           </motion.div>
         )}

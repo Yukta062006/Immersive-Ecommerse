@@ -28,7 +28,7 @@ interface ApiProduct {
   compareAtPrice?: number;
   category: { _id: string; name: string };
   images: { url: string; alt: string }[];
-  variants: { _id: string; name: string; sku: string; price: number; stock: number; options?: Record<string, string> }[];
+  variants: { _id: string; name: string; sku: string; price: number; salePrice?: number | null; stock: number; options?: Record<string, string>; color?: string | null; colorHex?: string | null; size?: string | null }[];
   ratings: { average: number; count: number };
   tags: string[];
   featured: boolean;
@@ -63,10 +63,11 @@ function transformProduct(apiProduct: ApiProduct): Product {
       name: v.name,
       sku: v.sku,
       price: v.price,
+      salePrice: v.salePrice ?? undefined,
       stock: v.stock,
-      size: v.options?.size,
-      color: v.options?.color,
-      colorHex: undefined,
+      size: v.size ?? v.options?.size,
+      color: v.color ?? v.options?.color,
+      colorHex: v.colorHex ?? undefined,
       images: [],
     })),
     reviews: [],

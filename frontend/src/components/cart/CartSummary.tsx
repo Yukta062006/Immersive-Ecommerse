@@ -14,7 +14,7 @@ export default function CartSummary() {
 
   const discountAmount = promoCode ? Math.round(cart.total * promoDiscount / 100) : 0;
   const subtotalAfterDiscount = cart.total - discountAmount;
-  const shipping = subtotalAfterDiscount > 10000 ? 0 : 999;
+  const shipping = subtotalAfterDiscount > 100 ? 0 : 9.99;
   const tax = Math.round(subtotalAfterDiscount * 0.08);
   const total = subtotalAfterDiscount + shipping + tax;
 
@@ -78,9 +78,9 @@ export default function CartSummary() {
         </div>
       </div>
 
-      {cart.total < 10000 && (
+      {cart.total < 100 && (
         <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
-          Add {formatPrice(10000 - cart.total)} more for free shipping!
+          Add {formatPrice(100 - cart.total)} more for free shipping!
         </p>
       )}
 

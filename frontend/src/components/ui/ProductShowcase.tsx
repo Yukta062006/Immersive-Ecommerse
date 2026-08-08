@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { formatPrice } from '@/lib/utils';
 
 interface Product {
   id: string;
@@ -42,7 +43,7 @@ export default function ProductShowcase({ products, intervalMs = 3000 }: Product
     );
   }
 
-  const formattedPrice = ((product.salePrice ?? product.price) / 100).toFixed(0);
+  const formattedPrice = formatPrice(product.salePrice ?? product.price);
 
   return (
     <div className="relative w-full aspect-square max-w-md mx-auto">
@@ -88,7 +89,7 @@ export default function ProductShowcase({ products, intervalMs = 3000 }: Product
                 {product.name}
               </p>
               <p className="text-white text-2xl font-bold">
-                ${formattedPrice}
+                {formattedPrice}
               </p>
             </motion.div>
           </AnimatePresence>

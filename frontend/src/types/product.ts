@@ -56,7 +56,7 @@ export interface PromoCode {
   code: string;
   description: string;
   discountPercent: number;
-  minPurchaseCents: number;
+  minPurchase: number;
   maxUses: number;
   usedCount: number;
   active: boolean;
