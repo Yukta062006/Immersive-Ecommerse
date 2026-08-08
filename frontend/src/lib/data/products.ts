@@ -189,7 +189,7 @@ const baseProducts: Product[] = [
       { id: 'v6-2', name: 'Silver', sku: 'WHMX5-SL', price: 299, stock: 15, color: 'Silver', colorHex: '#c0c0c0', images: [{ id: '6-1', url: 'https://images.unsplash.com/photo-1484704849700-f032d5265c49?w=600&h=600&fit=crop', alt: 'Silver', width: 600, height: 600 }] },
     ],
     reviews: [
-      { id: 'r6-1', userId: 'u15', userName: 'Nathan F.', rating: 4, title: 'Still great value', comment: 'Not much different from the XM6 for most people. ANC is nearly identical. Save the $70.', createdAt: '2025-03-05', verified: true },
+      { id: 'r6-1', userId: 'u15', userName: 'Nathan F.', rating: 4, title: 'Still great value', comment: 'Not much different from the XM6 for most people. ANC is nearly identical. Save the ₹70.', createdAt: '2025-03-05', verified: true },
     ],
     averageRating: 4.5,
     reviewCount: 567,
@@ -739,7 +739,7 @@ export const mockCategories = ['Footwear', 'Outerwear', 'Accessories', 'Electron
 
 export const promoCodes: PromoCode[] = [
   { code: 'WELCOME10', description: '10% off your first order', discountPercent: 10, minPurchase: 50, maxUses: 1000, usedCount: 342, active: true },
-  { code: 'SAVE20', description: '20% off orders over $100', discountPercent: 20, minPurchase: 100, maxUses: 500, usedCount: 89, active: true },
+  { code: 'SAVE20', description: '20% off orders over ₹100', discountPercent: 20, minPurchase: 100, maxUses: 500, usedCount: 89, active: true },
   { code: 'FREESHIP', description: 'Free shipping on any order', discountPercent: 0, minPurchase: 0, maxUses: 2000, usedCount: 567, active: true },
   { code: 'SUMMER25', description: '25% off summer collection', discountPercent: 25, minPurchase: 150, maxUses: 300, usedCount: 156, active: true },
   { code: 'EXPIRED', description: 'Old promo', discountPercent: 15, minPurchase: 0, maxUses: 10, usedCount: 10, active: false },
@@ -750,7 +750,7 @@ export function validatePromoCode(code: string, cartTotal: number): { valid: boo
   if (!promo) return { valid: false, error: 'Invalid promo code' };
   if (!promo.active) return { valid: false, error: 'This promo code is no longer active' };
   if (promo.usedCount >= promo.maxUses) return { valid: false, error: 'This promo code has reached its usage limit' };
-  if (cartTotal < promo.minPurchase) return { valid: false, error: `Minimum purchase of $${promo.minPurchase.toFixed(2)} required` };
+  if (cartTotal < promo.minPurchase) return { valid: false, error: `Minimum purchase of ₹${promo.minPurchase.toFixed(2)} required` };
   return { valid: true, promo };
 }
 
@@ -764,7 +764,7 @@ export const homeCategories = [
 ];
 
 export const features = [
-  { title: 'Free Shipping', desc: 'On orders over $100', icon: 'M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4' },
+  { title: 'Free Shipping', desc: 'On orders over ₹100', icon: 'M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4' },
   { title: 'Easy Returns', desc: '30-day return policy', icon: 'M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6' },
   { title: 'Secure Payment', desc: '256-bit SSL encryption', icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z' },
   { title: '24/7 Support', desc: 'Dedicated help center', icon: 'M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z' },

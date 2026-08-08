@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 
 class CheckoutController extends Controller
@@ -16,10 +17,11 @@ class CheckoutController extends Controller
      * Returns the Razorpay-compatible payload the frontend expects:
      * { orderId, razorpayOrderId, amount (in paise), currency }.
      *
-     * Razorpay is currently stubbed: no API key is configured, so a locally
-     * generated order id is returned and `verify` accepts the payment in test
-     * mode. When RAZORPAY_KEY_ID/SECRET are configured, real signature
-     * verification is performed.
+     * Razorpay is configured via RAZORPAY_KEY_ID/SECRET in `.env`. When keys
+     * are set, a real order is created through the Razorpay Orders API and
+     * `verify` performs signature verification. When no key is configured, a
+     * locally generated order id is returned and `verify` accepts the payment
+     * in test mode so the checkout flow remains testable offline.
      */
     public function createOrder(Request $request): JsonResponse
     {
@@ -102,14 +104,15 @@ class CheckoutController extends Controller
             $order->items()->create($orderItem);
         }
 
-        $razorpayOrderId = $this->stubRazorpayOrderId($total, config('services.razorpay.key_id'));
+        $amountPaise = (int) round($total * 100);
+        $razorpayOrderId = $this->createRazorpayOrder($amountPaise, $order->order_number);
 
         return response()->json([
             'success' => true,
             'data' => [
                 'orderId' => (string) $order->id,
                 'razorpayOrderId' => $razorpayOrderId,
-                'amount' => (int) round($total * 100),
+                'amount' => $amountPaise,
                 'currency' => 'INR',
             ],
         ], 201);
@@ -178,12 +181,49 @@ class CheckoutController extends Controller
         ]);
     }
 
-    private function stubRazorpayOrderId(float $total, ?string $keyId): string
+    /**
+     * Create a Razorpay order via the Orders API when test/live keys are
+     * configured. Falls back to a locally generated order id (stub mode) when
+     * no key is set, keeping the checkout flow testable offline.
+     *
+     * @return string The Razorpay order id (order_...) or a stub id.
+     */
+    private function createRazorpayOrder(int $amountPaise, string $receipt): string
     {
-        if ($keyId) {
-            // Real Razorpay integration would call the orders API here.
+        $keyId = config('services.razorpay.key_id');
+        $keySecret = config('services.razorpay.key_secret');
+
+        if (! $keyId || ! $keySecret) {
+            return $this->stubRazorpayOrderId();
         }
 
+        try {
+            $response = Http::withBasicAuth($keyId, $keySecret)
+                ->asJson()
+                ->acceptJson()
+                ->post('https://api.razorpay.com/v1/orders', [
+                    'amount' => $amountPaise,
+                    'currency' => 'INR',
+                    'receipt' => $receipt,
+                    'notes' => [
+                        'order_id' => $receipt,
+                    ],
+                ]);
+
+            $body = $response->json();
+
+            if ($response->successful() && isset($body['id'])) {
+                return $body['id'];
+            }
+        } catch (\Throwable $e) {
+            // Fall through to stub id; the verify step remains testable.
+        }
+
+        return $this->stubRazorpayOrderId();
+    }
+
+    private function stubRazorpayOrderId(): string
+    {
         return 'order_' . Str::random(24);
     }
 }

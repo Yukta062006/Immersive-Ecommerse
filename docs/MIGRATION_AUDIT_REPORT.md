@@ -172,7 +172,7 @@ Response shape matches `transformCart()` in `useCartStore.ts` exactly:
 
 Pricing mirrors `CartSummary.tsx`: shipping `0` when subtotal > 100 else `9.99`, tax `round(subtotal × 0.08)`, total rounded to 2dp. Returns `{orderId, razorpayOrderId, amount (paise), currency: 'INR'}` as the frontend expects.
 
-**Razorpay is stubbed**: no `razorpay` entry in `config/services.php`, no keys in `.env`, no composer package. `create-order` returns a locally generated `order_*` id, and `verify` performs a real HMAC signature check *when `RAZORPAY_KEY_ID`/`SECRET` are configured*; otherwise it falls back to test mode (matches order + marks `processing`, records payment ids, clears the cart). Add keys + the Razorpay package to enable real payments.
+**Razorpay**: `config/services.php` now exposes a `razorpay` block (`key_id`/`key_secret`/`webhook_secret`). When `RAZORPAY_KEY_ID` + `RAZORPAY_KEY_SECRET` are set in `laravel-backend/.env`, `create-order` calls the Razorpay Orders API and returns a real `order_*` id; `verify` performs the real HMAC signature check. With no keys configured it falls back to a locally generated id and test-mode verify (matches order + marks `processing`, records payment ids, clears the cart), keeping the flow testable offline. Note: PHP on the dev machine must have a CA bundle (`curl.cainfo`/`openssl.cafile`) or the Razorpay HTTPS call fails SSL verification and silently falls back to stub mode.
 
 ### Fixed — #3 `next build` type-check (`ProductForm.tsx`)
 

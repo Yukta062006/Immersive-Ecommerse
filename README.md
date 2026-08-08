@@ -290,7 +290,10 @@ REDIS_URL=redis://localhost:6379
 
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:4000/api
+NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_test_xxxxxxxxxxxx
 ```
+
+`NEXT_PUBLIC_RAZORPAY_KEY_ID` must match the `RAZORPAY_KEY_ID` set in the backend `.env` (frontend renders the Razorpay checkout modal). Restart `npm run dev` after changing it.
 
 ---
 

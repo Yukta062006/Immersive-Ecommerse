@@ -118,7 +118,7 @@ export default function AccountPage() {
                   </div>
                   <div className="text-right">
                     <p className="font-medium text-gray-900 dark:text-white">
-                      ${order.total.toFixed(2)}
+                      ₹{order.total.toFixed(2)}
                     </p>
                     <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${statusColors[order.status] || ''}`}>
                       {order.status}

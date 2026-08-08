@@ -56,17 +56,17 @@ export const docsData: Record<string, DocPage> = {
       {
         title: 'Domestic Shipping',
         content: [
-          'Standard Shipping: 5-7 business days — Free on orders over $50, otherwise $5.99.',
-          'Express Shipping: 2-3 business days — $12.99.',
-          'Overnight Shipping: Next business day — $24.99 (order by 2 PM EST).',
+          'Standard Shipping: 5-7 business days — Free on orders over ₹50, otherwise ₹5.99.',
+          'Express Shipping: 2-3 business days — ₹12.99.',
+          'Overnight Shipping: Next business day — ₹24.99 (order by 2 PM EST).',
         ],
       },
       {
         title: 'International Shipping',
         content: [
           'We ship to over 50 countries worldwide. International delivery typically takes 7-14 business days.',
-          'Standard International: $15.99.',
-          'Express International: $29.99.',
+          'Standard International: ₹15.99.',
+          'Express International: ₹29.99.',
           'Customs duties and taxes are the responsibility of the recipient.',
         ],
       },

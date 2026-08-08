@@ -25,3 +25,9 @@ Thumbs.db
 
 # Kiro
 .kiro/
+
+# Superpowers tooling
+.superpowers/
+
+# Local build artifacts
+frontend/build_output.txt

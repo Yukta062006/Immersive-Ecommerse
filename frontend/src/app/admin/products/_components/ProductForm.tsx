@@ -232,7 +232,7 @@ export default function ProductForm({ initial, categories, submitting, onSubmit 
           <Card className="p-5 space-y-4">
             <h3 className="text-sm font-semibold text-zinc-100">Pricing & inventory</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <Field label="Price (USD)" required error={errors.price}>
+              <Field label="Price (INR)" required error={errors.price}>
                 <Input type="number" step="0.01" min="0" value={form.price} onChange={(e) => set('price', e.target.value)} placeholder="99.99" />
               </Field>
               <Field label="Compare-at price" error={errors.compare_at_price}>
@@ -341,7 +341,7 @@ export default function ProductForm({ initial, categories, submitting, onSubmit 
                       <Field label="SKU" required>
                         <Input value={v.sku} onChange={(e) => setVariant(index, { sku: e.target.value })} placeholder="WH-001-BM" />
                       </Field>
-                      <Field label="Price (USD)" required>
+                      <Field label="Price (INR)" required>
                         <Input type="number" step="0.01" min="0" value={v.price} onChange={(e) => setVariant(index, { price: e.target.value })} placeholder="99.99" />
                       </Field>
                       <Field label="Sale price">

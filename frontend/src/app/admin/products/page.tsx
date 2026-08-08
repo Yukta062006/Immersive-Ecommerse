@@ -13,10 +13,7 @@ import {
   updateAdminProduct,
 } from '@/lib/admin-api';
 import { Button, Card, Input, Select, StatusBadge, ConfirmModal, Pagination, EmptyState, Spinner } from '../_components/ui';
-
-function formatPrice(value: number): string {
-  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
-}
+import { formatPrice } from '@/lib/utils';
 
 const STATUS_OPTIONS: { value: '' | ProductStatus; label: string }[] = [
   { value: '', label: 'All statuses' },

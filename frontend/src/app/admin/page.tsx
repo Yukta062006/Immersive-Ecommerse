@@ -17,10 +17,7 @@ import {
   fetchAdminCategories,
 } from '@/lib/admin-api';
 import { Card, StatusBadge, Spinner, Button } from './_components/ui';
-
-function formatPrice(value: number): string {
-  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
-}
+import { formatPrice } from '@/lib/utils';
 
 function StatCard({
   icon: Icon,
