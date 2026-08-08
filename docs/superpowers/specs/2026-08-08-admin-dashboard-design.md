@@ -62,17 +62,20 @@ All data flows from Laravel endpoints. No mock data anywhere.
 
 ### 3.3 Lower row
 - Recent Orders table (left, wider, 5 rows)
-- Right column stack: Quick Actions card → Activity Timeline → Low Stock list
+- Right column stack: Quick Actions card → Activity Timeline → Recent Customers list → Low Stock list
 
-### 3.4 Quick Actions (navigation-only, no new backend)
+### 3.4 Single-request dashboard
+`GET /admin/dashboard` is the **sole** source for `/admin`: it returns KPIs + growth deltas, all four chart series, recent orders, activity timeline, recent customers, and low-stock products in **one request**. No follow-up widget requests on initial load.
+
+### 3.5 Quick Actions (navigation-only, no new backend)
 - New Product → `/admin/products/new`
 - Add Category → `/admin/categories`
 - View Pending Orders → `/admin/orders?status=pending`
 - View Low Stock → `/admin/products?stock=low`
 - View Reports → `/admin/analytics`
 
-### 3.5 Activity Timeline
-- Last 6 order status changes: order ref, `from → to` transition, who/when. Powered by the new `order_status_histories` table.
+### 3.6 Activity Timeline
+- Last 6 order status changes: order ref, `from → to` transition, actor (name/email), timestamp. Powered by the new `order_status_histories` table.
 
 ## 4. Orders (`/admin/orders`)
 
@@ -134,7 +137,8 @@ All data flows from Laravel endpoints. No mock data anywhere.
 
 ### 8.2 Resources
 - `OrderResource`, `OrderItemResource`, `CustomerResource`, `AdminAnalyticsResource`.
-- Consistent envelope: success `{ success, data }`; error `{ success, message, errors? }`. Empty collections → `[]`.
+- Consistent envelope for **all** admin endpoints: success `{ success: true, data }`; error `{ success: false, message, errors? }`. Empty collections → `[]`.
+- Uniform pagination shape for list endpoints: `{ success: true, data: { items: [...], meta: { current_page, per_page, last_page, total } } }`. Every admin list response uses this exact shape; the frontend consumes it via a single helper.
 
 ### 8.3 Data & queries
 - Revenue = sum of `total` for non-cancelled orders.
@@ -150,7 +154,7 @@ Every dashboard card, chart, and table is driven by actual database records prod
 
 - `OrderFactory` (status, money columns, `shipping_address` array, `paid_at`, dates spread over the past 12 months, realistic LOW/high order values in INR) and `OrderItemFactory` (reuse real seeded products/variants, per-item `options`/`color`/`size`, `image_url` from product images).
 - A `CustomerSeeder` (e.g. 25–40 seeded customer `User` accounts via `UserFactory`, `role='customer'`) — no passwords needed beyond a shared dev default.
-- An `OrderSeeder` producing ~150–250 orders across those customers and 2–24 months of history with a **realistic status mix** (mostly `delivered`, some `pending`/`processing`/`shipped`, a few `cancelled`), items at seed-product prices, and consistent `order_status_histories` rows so the Activity Timeline and order-detail timelines have data.
+- An `OrderSeeder` producing ~150–250 orders across those customers and 2–24 months of history with a **realistic, weighted status mix** (delivered ~60–70%, processing ~15–20%, pending ~5–10%, shipped ~5–10%, cancelled ~2–5%), items at seed-product prices, and consistent `order_status_histories` rows so the Activity Timeline and order-detail timelines have data.
 - Register all new seeders in `DatabaseSeeder` (idempotent `updateOrCreate`/guarded creates so re-running is safe).
 
 Constraints:
@@ -166,8 +170,9 @@ Fields: `id`, `order_id` (FK, cascade), `from_status`, `to_status`, `changed_by`
 - `updateStatus`: new status must be one of the enum; records a history row; timestamps updated.
 
 ### 8.7 Caching
-- 60s cache for `dashboard` and `analytics` endpoints only.
+- 60s cache for `dashboard` and `analytics` endpoints only (the expensive aggregates); maybe 30s if queries are light — decide at implementation via the aggregate query cost.
 - Orders/customers/settings uncached (always fresh).
+- **Cache invalidation on writes:** product create/update/delete and order status updates explicitly clear the cached dashboard + analytics aggregates (`Cache::forget` on the known keys) so KPIs/charts are never stale after an admin mutation. Admin reads of cached endpoints remain cache-miss-tolerant (fresh compute in no cached value).
 
 ### 8.8 Routes
 ```
