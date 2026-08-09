@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { ProductImage } from '@/types/product';
@@ -13,16 +13,21 @@ interface ImageGalleryProps {
 export default function ImageGallery({ images, variantImages }: ImageGalleryProps) {
   const [selected, setSelected] = useState(0);
   const [activeImages, setActiveImages] = useState(images);
+  const [prevImages, setPrevImages] = useState<{ images: ProductImage[]; variantImages?: ProductImage[] }>({
+    images,
+    variantImages,
+  });
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  if (prevImages.variantImages !== variantImages || prevImages.images !== images) {
+    setPrevImages({ images, variantImages });
     if (variantImages && variantImages.length > 0) {
       setActiveImages(variantImages);
       setSelected(0);
     } else {
       setActiveImages(images);
     }
-  }, [variantImages, images]);
+  }
 
   const displayImages = activeImages.length > 0 ? activeImages : images;
 

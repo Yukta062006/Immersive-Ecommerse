@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useSyncExternalStore } from 'react';
 import dynamic from 'next/dynamic';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
@@ -40,6 +40,10 @@ interface ApiProduct {
   featured: boolean;
   stock: number;
   status?: string;
+}
+
+function subscribeIntroSeen(): () => void {
+  return () => {};
 }
 
 function transformProduct(apiProduct: ApiProduct): Product {
@@ -86,21 +90,16 @@ function transformProduct(apiProduct: ApiProduct): Product {
 export default function HomePage() {
   const [introComplete, setIntroComplete] = useState(false);
   const [showContent, setShowContent] = useState(false);
-  const [shouldShowIntro, setShouldShowIntro] = useState(false);
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
+  const introSeen = useSyncExternalStore(
+    subscribeIntroSeen,
+    () => (typeof window !== 'undefined' ? sessionStorage.getItem('intro-seen') !== null : false),
+    () => false
+  );
+  const shouldShowIntro = !introSeen;
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 500], [0, 150]);
   const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
-
-  useEffect(() => {
-    const seen = sessionStorage.getItem('intro-seen');
-    if (!seen) {
-      setShouldShowIntro(true);
-    } else {
-      setIntroComplete(true);
-      setShowContent(true);
-    }
-  }, []);
 
   useEffect(() => {
     if (introComplete && shouldShowIntro) {
@@ -126,7 +125,7 @@ export default function HomePage() {
   return (
     <>
       {shouldShowIntro && !introComplete && <IntroScene onComplete={() => setIntroComplete(true)} />}
-      <div className={`transition-opacity duration-700 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`transition-opacity duration-700 ${introSeen || showContent ? 'opacity-100' : 'opacity-0'}`}>
         {/* Hero Section with Parallax */}
         <motion.section
           style={{ y: heroY, opacity: heroOpacity }}

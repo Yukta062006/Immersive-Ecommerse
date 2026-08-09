@@ -1,10 +1,17 @@
 'use client';
 
-import { useEffect, useRef, useMemo } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export function useScrollReveal(options?: IntersectionObserverInit) {
   const ref = useRef<HTMLDivElement>(null);
-  const stableOptions = useMemo(() => options, [JSON.stringify(options)]);
+  const [stableOptions, setStableOptions] = useState<IntersectionObserverInit | undefined>(options);
+  const optionsKey = JSON.stringify(options ?? null);
+  const [prevOptionsKey, setPrevOptionsKey] = useState(optionsKey);
+
+  if (optionsKey !== prevOptionsKey) {
+    setPrevOptionsKey(optionsKey);
+    setStableOptions(options);
+  }
 
   useEffect(() => {
     const el = ref.current;

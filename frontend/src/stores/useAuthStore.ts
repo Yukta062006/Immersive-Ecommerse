@@ -40,7 +40,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     const user = data.user;
     saveUserToStorage(user);
     userLoaded = true;
-    set({ user, isAuthenticated: true, isMockAuth: false });
+    set({ user, isAuthenticated: true, isMockAuth: false, isLoading: false });
     await useCartStore.getState().mergeGuestCart();
   },
 
@@ -51,7 +51,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     const user = data.user;
     saveUserToStorage(user);
     userLoaded = true;
-    set({ user, isAuthenticated: true, isMockAuth: false });
+    set({ user, isAuthenticated: true, isMockAuth: false, isLoading: false });
     await useCartStore.getState().mergeGuestCart();
   },
 
@@ -60,12 +60,15 @@ export const useAuthStore = create<AuthState>((set) => ({
     localStorage.removeItem('refreshToken');
     saveUserToStorage(null);
     userLoaded = false;
-    set({ user: null, isAuthenticated: false, isMockAuth: false });
+    set({ user: null, isAuthenticated: false, isMockAuth: false, isLoading: false });
     useCartStore.getState().resetCart();
   },
 
   loadUser: async () => {
-    if (userLoaded) return;
+    if (userLoaded) {
+      set({ isLoading: false });
+      return;
+    }
     try {
       const token = localStorage.getItem('accessToken');
       if (!token) {

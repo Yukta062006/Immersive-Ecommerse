@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { formatPrice } from '@/lib/utils';
+import Image from 'next/image';
 
 interface Product {
   id: string;
@@ -20,10 +21,8 @@ interface ProductShowcaseProps {
 
 export default function ProductShowcase({ products, intervalMs = 3000 }: ProductShowcaseProps) {
   const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(1);
 
   const next = useCallback(() => {
-    setDirection(1);
     setCurrent((prev) => (prev + 1) % products.length);
   }, [products.length]);
 
@@ -65,10 +64,13 @@ export default function ProductShowcase({ products, intervalMs = 3000 }: Product
             transition={{ duration: 0.5, ease: 'easeInOut' }}
             className="absolute inset-0"
           >
-            <img
+            <Image
               src={product.images[0]?.url}
               alt={product.images[0]?.alt || product.name}
-              className="w-full h-full object-cover"
+              fill
+              unoptimized
+              sizes="(max-width: 768px) 100vw, 480px"
+              className="object-cover"
             />
             {/* Glass overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
@@ -107,7 +109,7 @@ export default function ProductShowcase({ products, intervalMs = 3000 }: Product
         {products.map((_, i) => (
           <button
             key={i}
-            onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
+            onClick={() => setCurrent(i)}
             className={`w-2 h-2 rounded-full transition-all duration-300 ${
               i === current
                 ? 'bg-indigo-500 dark:bg-indigo-400 w-5'

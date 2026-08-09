@@ -1,12 +1,26 @@
 import api from '@/lib/api';
 import type {
+  AdminAnalytics,
+  AdminAnalyticsResponse,
   AdminCategory,
   AdminCategoryListResponse,
   AdminCategoryResponse,
+  AdminCustomerListResponse,
+  AdminCustomerResponse,
+  AdminDashboard,
+  AdminDashboardResponse,
+  AdminMeta,
+  AdminOrder,
+  AdminOrderListResponse,
+  AdminOrderResponse,
   AdminProduct,
   AdminProductListResponse,
   AdminProductResponse,
+  AdminSettings,
+  AdminSettingsResponse,
   AdminSimpleResponse,
+  AnalyticsRange,
+  OrderStatus,
   ProductStatus,
 } from '@/types/admin';
 
@@ -131,4 +145,97 @@ export async function deleteAdminCategory(id: string): Promise<AdminSimpleRespon
   return data;
 }
 
+// ── Dashboard ─────────────────────────────────────────────────────────────
+
+/** Fetch the aggregate admin dashboard (KPIs, trends, recent activity). */
+export async function fetchAdminDashboard(): Promise<AdminDashboardResponse> {
+  const { data } = await api.get<AdminDashboardResponse>('/admin/dashboard');
+  return data;
+}
+
+// ── Analytics ─────────────────────────────────────────────────────────────
+
+/** Fetch analytics for a range (30/90/365/all). */
+export async function fetchAdminAnalytics(range: AnalyticsRange = '30'): Promise<AdminAnalyticsResponse> {
+  const { data } = await api.get<AdminAnalyticsResponse>('/admin/analytics', { params: { range } });
+  return data;
+}
+
+// ── Orders ────────────────────────────────────────────────────────────────
+
+export interface AdminOrderQuery {
+  status?: OrderStatus;
+  search?: string;
+  date_from?: string;
+  date_to?: string;
+  sort?: 'newest' | 'oldest' | 'total_desc' | 'total_asc';
+  page?: number;
+  limit?: number;
+}
+
+/** Fetch the paginated admin order list with optional filters. */
+export async function fetchAdminOrders(query: AdminOrderQuery = {}): Promise<AdminOrderListResponse> {
+  const params: Record<string, string | number> = {};
+  if (query.status) params.status = query.status;
+  if (query.search) params.search = query.search;
+  if (query.date_from) params.date_from = query.date_from;
+  if (query.date_to) params.date_to = query.date_to;
+  if (query.sort) params.sort = query.sort;
+  if (query.page) params.page = query.page;
+  if (query.limit) params.limit = query.limit;
+  const { data } = await api.get<AdminOrderListResponse>('/admin/orders', { params });
+  return data;
+}
+
+/** Fetch a single order with items and status history. */
+export async function fetchAdminOrder(id: string): Promise<AdminOrderResponse> {
+  const { data } = await api.get<AdminOrderResponse>(`/admin/orders/${id}`);
+  return data;
+}
+
+/** Update an order's status (records history + invalidates caches). */
+export async function updateOrderStatus(id: string, status: OrderStatus): Promise<AdminOrderResponse> {
+  const { data } = await api.patch<AdminOrderResponse>(`/admin/orders/${id}/status`, { status });
+  return data;
+}
+
+// ── Customers ─────────────────────────────────────────────────────────────
+
+export interface AdminCustomerQuery {
+  search?: string;
+  page?: number;
+  limit?: number;
+}
+
+/** Fetch the paginated admin customer list. */
+export async function fetchAdminCustomers(query: AdminCustomerQuery = {}): Promise<AdminCustomerListResponse> {
+  const params: Record<string, string | number> = {};
+  if (query.search) params.search = query.search;
+  if (query.page) params.page = query.page;
+  if (query.limit) params.limit = query.limit;
+  const { data } = await api.get<AdminCustomerListResponse>('/admin/customers', { params });
+  return data;
+}
+
+/** Fetch a single customer with KPIs and recent orders. */
+export async function fetchAdminCustomer(id: string): Promise<AdminCustomerResponse> {
+  const { data } = await api.get<AdminCustomerResponse>(`/admin/customers/${id}`);
+  return data;
+}
+
+// ── Settings ──────────────────────────────────────────────────────────────
+
+/** Fetch all store settings grouped by group. */
+export async function fetchAdminSettings(): Promise<AdminSettingsResponse> {
+  const { data } = await api.get<AdminSettingsResponse>('/admin/settings');
+  return data;
+}
+
+/** Upsert settings within a single group. */
+export async function updateAdminSettings(group: string, settings: Record<string, unknown>): Promise<AdminSettingsResponse> {
+  const { data } = await api.put<AdminSettingsResponse>('/admin/settings', { group, settings });
+  return data;
+}
+
+export type { AdminMeta, AdminOrder, AdminSettings, AdminDashboard, AdminAnalytics };
 export type { AdminCategory, AdminProduct };

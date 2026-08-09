@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { CartItem, Cart } from '@/types/cart';
-import { Product, ProductVariant } from '@/types/product';
+import { Product, ProductVariant, ProductReview } from '@/types/product';
 import api from '@/lib/api';
 import { useUIStore } from '@/stores/useUIStore';
 import { useAuthStore } from '@/stores/useAuthStore';
@@ -40,14 +40,76 @@ interface CartState {
 
 const emptyCart: Cart = { id: '', items: [], total: 0, itemCount: 0 };
 
+interface BackendCartImage {
+  _id?: string;
+  id?: string;
+  url?: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+}
+
+interface BackendCartVariant {
+  _id?: string;
+  id?: string;
+  name?: string;
+  sku?: string;
+  price?: number;
+  stock?: number;
+  color?: string;
+  colorHex?: string;
+  size?: string;
+  images?: BackendCartImage[];
+  options?: Record<string, string>;
+}
+
+interface BackendCartProduct {
+  _id?: string;
+  id?: string;
+  name?: string;
+  slug?: string;
+  description?: string;
+  shortDescription?: string;
+  price?: number;
+  brand?: string;
+  category?: string;
+  tags?: string[];
+  images?: BackendCartImage[];
+  variants?: BackendCartVariant[];
+  reviews?: ProductReview[];
+  ratings?: { average?: number; count?: number };
+  averageRating?: number;
+  reviewCount?: number;
+  featured?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+  stock?: number;
+}
+
+interface BackendCartItem {
+  _id?: string;
+  id?: string;
+  product?: BackendCartProduct;
+  variant?: string | { _id?: string; id?: string; price?: number; name?: string };
+  price?: number;
+  quantity?: number;
+}
+
+interface BackendCart {
+  _id?: string;
+  id?: string;
+  items?: BackendCartItem[];
+  total?: number;
+}
+
 /**
  * Transforms the backend cart response into the frontend Cart shape.
  * Handles _id → id mapping, computes itemCount, and creates minimal variant objects.
  */
-function transformCart(backendCart: any): Cart {
+function transformCart(backendCart: BackendCart): Cart {
   if (!backendCart) return emptyCart;
 
-  const items: CartItem[] = (backendCart.items || []).map((item: any) => {
+  const items: CartItem[] = (backendCart.items || []).map((item: BackendCartItem) => {
     const product = item.product || {};
     return {
       id: item._id?.toString() || item.id || '',
@@ -61,14 +123,30 @@ function transformCart(backendCart: any): Cart {
         brand: product.brand || '',
         category: product.category || '',
         tags: product.tags || [],
-        images: (product.images || []).map((img: any) => ({
+        images: (product.images || []).map((img: BackendCartImage) => ({
           id: img._id?.toString() || img.id || '',
           url: img.url || '',
           alt: img.alt || '',
           width: img.width || 800,
           height: img.height || 800,
         })),
-        variants: product.variants || [],
+        variants: (product.variants || []).map((v) => ({
+          id: v._id?.toString() || v.id || '',
+          name: v.name || '',
+          sku: v.sku || '',
+          price: v.price || 0,
+          stock: v.stock || 0,
+          size: v.size ?? v.options?.size,
+          color: v.color ?? v.options?.color,
+          colorHex: v.colorHex ?? undefined,
+          images: (v.images || []).map((img) => ({
+            id: img._id?.toString() || img.id || '',
+            url: img.url || '',
+            alt: img.alt || '',
+            width: img.width || 800,
+            height: img.height || 800,
+          })),
+        })),
         reviews: product.reviews || [],
         averageRating: product.ratings?.average || product.averageRating || 0,
         reviewCount: product.ratings?.count || product.reviewCount || 0,

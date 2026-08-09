@@ -15,10 +15,40 @@ interface PaymentFormProps {
   isLoading?: boolean;
 }
 
+interface RazorpayPaymentDetails {
+  razorpay_payment_id: string;
+  razorpay_order_id: string;
+  razorpay_signature: string;
+}
+
+interface RazorpayOptions {
+  key: string;
+  amount: number;
+  currency: string;
+  name: string;
+  description: string;
+  order_id: string;
+  prefill: {
+    name: string;
+    email: string;
+  };
+  theme: {
+    color: string;
+  };
+  handler: (response: RazorpayPaymentDetails) => void;
+  modal: {
+    ondismiss: () => void;
+  };
+}
+
+interface RazorpayInstance {
+  on: (event: 'payment.failed', handler: (response: { error?: { description?: string } }) => void) => void;
+  open: () => void;
+}
+
 declare global {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   interface Window {
-    Razorpay: any;
+    Razorpay: new (options: RazorpayOptions) => RazorpayInstance;
   }
 }
 
@@ -100,7 +130,7 @@ export default function PaymentForm({
       theme: {
         color: '#4f46e5',
       },
-      handler: function (response: { razorpay_payment_id: string; razorpay_order_id: string; razorpay_signature: string }) {
+      handler: function (response: RazorpayPaymentDetails) {
         onPaymentSuccess({
           razorpayPaymentId: response.razorpay_payment_id,
           razorpayOrderId: response.razorpay_order_id,
@@ -117,9 +147,9 @@ export default function PaymentForm({
     };
 
     const rzp = new window.Razorpay(options);
-    rzp.on('payment.failed', function (response: { error: { description?: string } }) {
+    rzp.on('payment.failed', function (response: { error?: { description?: string } }) {
       setIsOpening(false);
-      onPaymentError(response.error.description || 'Payment failed');
+      onPaymentError(response.error?.description || 'Payment failed');
     });
     rzp.open();
   };

@@ -14,7 +14,7 @@ export default function DocPage() {
       <div className="min-h-screen flex items-center justify-center bg-white dark:bg-zinc-950">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Page Not Found</h1>
-          <p className="text-gray-500 dark:text-gray-400 mb-6">The page you're looking for doesn't exist.</p>
+          <p className="text-gray-500 dark:text-gray-400 mb-6">The page you&apos;re looking for doesn&apos;t exist.</p>
           <Link href="/" className="text-indigo-600 dark:text-indigo-400 hover:underline">
             Go Home
           </Link>

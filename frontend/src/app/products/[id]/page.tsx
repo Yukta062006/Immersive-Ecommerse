@@ -12,7 +12,6 @@ import RatingStars from '@/components/ui/RatingStars';
 import PriceTag from '@/components/ui/PriceTag';
 import ReviewsSection from '@/components/product/ReviewsSection';
 import ProductRecommendations from '@/components/product/ProductRecommendations';
-import { useCartStore } from '@/stores/useCartStore';
 import { useWishlistStore } from '@/stores/useWishlistStore';
 import { useUIStore } from '@/stores/useUIStore';
 import { Product } from '@/types/product';
@@ -145,16 +144,16 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
   const [reviewsList, setReviewsList] = useState(product?.reviews || []);
   const [localRating, setLocalRating] = useState(product?.averageRating || 0);
   const [localReviewCount, setLocalReviewCount] = useState(product?.reviewCount || 0);
+  const [prevProductId, setPrevProductId] = useState<string | undefined>(product?.id);
 
-  useEffect(() => {
-    if (product) {
-      setReviewsList(product.reviews);
-      setLocalRating(product.averageRating);
-      setLocalReviewCount(product.reviewCount);
-      setSelectedSize(null);
-      setSelectedColor(null);
-    }
-  }, [product]);
+  if (product && prevProductId !== product.id) {
+    setPrevProductId(product.id);
+    setReviewsList(product.reviews);
+    setLocalRating(product.averageRating);
+    setLocalReviewCount(product.reviewCount);
+    setSelectedSize(null);
+    setSelectedColor(null);
+  }
 
   if (loading) {
     return (

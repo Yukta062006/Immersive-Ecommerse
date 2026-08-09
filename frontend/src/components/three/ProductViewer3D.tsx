@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useState, useMemo } from 'react';
+import { Suspense, useMemo } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, ContactShadows } from '@react-three/drei';
 import ProductModel from './ProductModel';
@@ -62,7 +62,7 @@ const defaultHotspots: Record<string, HotspotData[]> = {
 };
 
 export default function ProductViewer3DWrapper({ product, selectedColor }: ProductViewer3DProps) {
-  const [color, setColor] = useState(selectedColor || '#6366f1');
+  const color = selectedColor || '#6366f1';
   const mappedCategory = categoryMap[product.category.toLowerCase()] || 'electronics';
   const hotspots = useMemo(() => defaultHotspots[mappedCategory] || defaultHotspots.electronics, [mappedCategory]);
 

@@ -1,34 +1,37 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useSyncExternalStore } from "react"
 import { Moon, Sun } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useIsDark } from "@/lib/use-is-dark"
+
+function subscribeToNothing(): () => void {
+  return () => {}
+}
+
+function useIsHydrated(): boolean {
+  return useSyncExternalStore(
+    subscribeToNothing,
+    () => true,
+    () => false
+  )
+}
 
 interface ThemeToggleProps {
   className?: string
 }
 
 export function ThemeToggle({ className }: ThemeToggleProps) {
-  const [isDark, setIsDark] = useState(false)
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-    const saved = localStorage.getItem("theme")
-    const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches
-    const dark = saved ? saved === "dark" : systemDark
-    setIsDark(dark)
-    document.documentElement.classList.toggle("dark", dark)
-  }, [])
+  const isDark = useIsDark()
+  const hydrated = useIsHydrated()
 
   const toggle = () => {
     const next = !isDark
-    setIsDark(next)
     document.documentElement.classList.toggle("dark", next)
     localStorage.setItem("theme", next ? "dark" : "light")
   }
 
-  if (!mounted) {
+  if (!hydrated) {
     return (
       <div className={cn("w-16 h-8 rounded-full bg-gray-200", className)} />
     )

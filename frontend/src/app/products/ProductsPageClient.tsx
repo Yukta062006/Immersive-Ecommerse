@@ -8,11 +8,6 @@ import ProductFilters from '@/components/product/ProductFilters';
 import { ProductFilters as FiltersType, Product } from '@/types/product';
 import api from '@/lib/api';
 
-interface ProductsPageClientProps {
-  initialBrand?: string;
-  initialCategory?: string;
-}
-
 interface ApiProduct {
   _id: string;
   name: string;
@@ -69,7 +64,7 @@ function transformProduct(apiProduct: ApiProduct): Product {
   };
 }
 
-export default function ProductsPageClient({ initialBrand, initialCategory }: ProductsPageClientProps) {
+export default function ProductsPageClient() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -77,20 +72,13 @@ export default function ProductsPageClient({ initialBrand, initialCategory }: Pr
   const [categories, setCategories] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const [filters, setFilters] = useState<FiltersType>({
-    ...(initialBrand && { brand: initialBrand }),
-    ...(initialCategory && { category: initialCategory }),
-  });
+  const [localFilters, setLocalFilters] = useState<Omit<FiltersType, 'brand' | 'category'>>({});
 
-  useEffect(() => {
-    const brand = searchParams.get('brand');
-    const category = searchParams.get('category');
-    setFilters((prev) => ({
-      ...prev,
-      brand: brand || undefined,
-      category: category || undefined,
-    }));
-  }, [searchParams]);
+  const filters: FiltersType = {
+    ...localFilters,
+    brand: searchParams.get('brand') ?? undefined,
+    category: searchParams.get('category') ?? undefined,
+  };
 
   useEffect(() => {
     async function fetchProducts() {
@@ -137,10 +125,11 @@ export default function ProductsPageClient({ initialBrand, initialCategory }: Pr
   });
 
   const handleFilterChange = (newFilters: FiltersType) => {
-    setFilters(newFilters);
+    const { brand, category, ...rest } = newFilters;
+    setLocalFilters(rest);
     const params = new URLSearchParams();
-    if (newFilters.brand) params.set('brand', newFilters.brand);
-    if (newFilters.category) params.set('category', newFilters.category);
+    if (brand) params.set('brand', brand);
+    if (category) params.set('category', category);
     const qs = params.toString();
     router.replace(`/products${qs ? `?${qs}` : ''}`, { scroll: false });
   };
