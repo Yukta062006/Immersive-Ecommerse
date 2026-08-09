@@ -36,9 +36,10 @@
 | `/products/[id]` | Product detail — image gallery, 3D viewer, color swatches, size selector, reviews |
 | `/cart` | Cart with quantity controls, summary, and promo code input |
 | `/checkout` | 3-step checkout: Shipping → Payment (Razorpay) → Confirmation |
-| `/auth/login` | Login with email/password + Google & GitHub OAuth |
+| `/auth/login` | Login with email/password |
 | `/auth/signup` | Registration form |
 | `/account` | User account and order history |
+| `/admin` | Admin dashboard (products, orders, customers, analytics, settings) |
 | `/docs/[slug]` | Documentation pages (dynamic route, 10 articles) |
 
 ---
@@ -71,7 +72,18 @@ Immersive-Ecommerse/
 │       ├── lib/                 # api.ts (axios), queryClient.ts, utils.ts
 │       └── types/               # Product, Cart, Order, User TypeScript types
 │
-├── backend/                     # Express + TypeScript API
+│
+├── laravel-backend/             # Laravel API (primary backend, used by frontend)
+│   └── app/
+│       ├── Http/Controllers/    # Admin controllers (product, order, customer, analytics, settings)
+│       ├── Http/Middleware/     # EnsureUserIsAdmin
+│       ├── Models/              # User, Product, Category, Order, OrderStatusHistory, StoreSetting
+│       └── Http/Resources/      # OrderResource, CustomerResource…
+│   └── database/
+│       ├── migrations/          # Schema incl. settings + order_status_histories
+│       └── seeders/             # Categories, products, admin, 40 customers, 240 orders
+│
+├── backend/                     # Express + TypeScript API (alternative backend)
 │   └── src/
 │       ├── controllers/         # auth, cart, checkout, oauth, product, webhook
 │       ├── models/              # User, Product, Category, Cart, Order (Mongoose)
@@ -183,13 +195,11 @@ Order      — user, items[], status, paymentIntentId,
 
 | Concern | Solution |
 |---|---|
-| Auth tokens | httpOnly cookies, 15-min access + 7-day refresh |
-| OAuth | PKCE flow, state param signed with `OAUTH_STATE_SECRET` |
-| Passwords | bcrypt with salt rounds |
-| API abuse | Per-endpoint rate limits (login: 5/15min, signup: 3/hr, general: 60/min) |
-| Request validation | Zod schemas on all incoming bodies |
-| Security headers | Helmet middleware |
-| CSRF | SameSite=Lax cookies + x-csrf-token header |
+| Auth | Laravel Sanctum token auth, httpOnly cookies, `auth:sanctum` middleware |
+| Passwords | Bcrypt with 12 rounds |
+| Admin access | `EnsureUserIsAdmin` middleware on all `/admin` routes (403 for non-admins) |
+| API abuse | Rate limiting on auth endpoints |
+| Security headers | Laravel middleware stack |
 | Payments | Razorpay signature verification on every webhook |
 
 ---
@@ -219,10 +229,12 @@ Order      — user, items[], status, paymentIntentId,
 
 ### Prerequisites
 
+- PHP 8.2+
+- Composer
 - Node.js 20+
-- MongoDB (local) or [MongoDB Atlas](https://cloud.mongodb.com) (free tier)
-- Razorpay test keys from [dashboard.razorpay.com](https://dashboard.razorpay.com/app/keys)
-- Google + GitHub OAuth apps (optional, for social login)
+- MySQL 8+
+- Razorpay **test** keys from [dashboard.razorpay.com](https://dashboard.razorpay.com/developers) (create a *test mode* key pair)
+- Git
 
 ### 1. Clone
 
@@ -231,16 +243,23 @@ git clone https://github.com/navin-shanke/Immersive-Ecommerse.git
 cd Immersive-Ecommerse
 ```
 
-### 2. Backend
+### 2. Backend (Laravel — used by the frontend)
 
 ```bash
-cd backend
-npm install
+cd laravel-backend
+composer install
 cp .env.example .env
-# Edit .env with your credentials
-npm run seed      # seed sample products & categories
-npm run dev       # → http://localhost:4000
+php artisan key:generate
+# Edit .env: set DB_CONNECTION=mysql + your DB_* credentials, then
+# set RAZORPAY_KEY_ID / RAZORPAY_KEY_SECRET to your test-mode keys
+php artisan migrate --seed   # creates schema + demo data (12 products, 40 customers, 240 orders)
+php artisan serve            # → http://localhost:4000
 ```
+
+> **Development admin** (created by `AdminUserSeeder`): `admin@immersive.test` / `ChangeMe123!`
+> Override via `ADMIN_EMAIL` / `ADMIN_NAME` / `ADMIN_PASSWORD` in `laravel-backend/.env`. Non-local environments must set real credentials and change the password after first login.
+
+Razorpay runs in **test mode**: use the `rzp_test_*` keys from your dashboard; transactions are simulated, no real money moves. Checkout/confirmaton verifies the payment signature exactly like production.
 
 ### 3. Frontend
 
@@ -248,43 +267,47 @@ npm run dev       # → http://localhost:4000
 cd frontend
 npm install
 echo "NEXT_PUBLIC_API_URL=http://localhost:4000/api" > .env.local
+echo "NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_test_xxxxxxxxxxxx" >> .env.local
 npm run dev       # → http://localhost:3000
 ```
+
+`NEXT_PUBLIC_RAZORPAY_KEY_ID` must match the `RAZORPAY_KEY_ID` in the backend `.env`. Restart `npm run dev` after changing it.
+
+### Alternative Node backend
+
+The monorepo also ships a Node/Express/MongoDB backend in `backend/` (see `backend/README.md`). It is not used by the frontend by default; run it only if you intend to develop against Express instead of Laravel.
 
 ---
 
 ## 🔧 Environment Variables
 
-### `backend/.env`
+### `laravel-backend/.env`
+
+Start from `laravel-backend/.env.example`, then fill in:
 
 ```env
-PORT=4000
-NODE_ENV=development
+APP_ENV=local
+APP_DEBUG=true
 
-MONGODB_URI=mongodb://localhost:27017/immersive-ecommerce
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=immersive_ecommerce
+DB_USERNAME=immersive_app
+DB_PASSWORD=your_db_password
 
-JWT_SECRET=your-super-secret-jwt-key
-JWT_REFRESH_SECRET=your-super-secret-refresh-key
-JWT_EXPIRES_IN=15m
-JWT_REFRESH_EXPIRES_IN=7d
-
-# Razorpay — https://dashboard.razorpay.com/app/keys
+# Razorpay test keys — https://dashboard.razorpay.com/developers
 RAZORPAY_KEY_ID=rzp_test_xxxxxxxxxxxx
 RAZORPAY_KEY_SECRET=your_razorpay_key_secret
 RAZORPAY_WEBHOOK_SECRET=your_razorpay_webhook_secret
 
-# Google OAuth — https://console.cloud.google.com/apis/credentials
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
-
-# GitHub OAuth — https://github.com/settings/developers
-GITHUB_CLIENT_ID=your_github_client_id
-GITHUB_CLIENT_SECRET=your_github_client_secret
-
-OAUTH_STATE_SECRET=random-signing-string
-FRONTEND_URL=http://localhost:3000
-REDIS_URL=redis://localhost:6379
+# Seeded admin (used by AdminUserSeeder) — change in non-local environments
+ADMIN_NAME=Admin
+ADMIN_EMAIL=admin@immersive.test
+ADMIN_PASSWORD=ChangeMe123!
 ```
+
+`php artisan key:generate` sets `APP_KEY` automatically.
 
 ### `frontend/.env.local`
 
@@ -293,24 +316,41 @@ NEXT_PUBLIC_API_URL=http://localhost:4000/api
 NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_test_xxxxxxxxxxxx
 ```
 
-`NEXT_PUBLIC_RAZORPAY_KEY_ID` must match the `RAZORPAY_KEY_ID` set in the backend `.env` (frontend renders the Razorpay checkout modal). Restart `npm run dev` after changing it.
+`NEXT_PUBLIC_API_URL` must point at the running Laravel server (`/api`). `NEXT_PUBLIC_RAZORPAY_KEY_ID` must match the backend `RAZORPAY_KEY_ID`, otherwise the Razorpay checkout modal cannot open. Restart `npm run dev` after changing either.
+
+### `backend/.env` (optional Node backend)
+
+```env
+PORT=4000
+NODE_ENV=development
+MONGODB_URI=mongodb://localhost:27017/immersive-ecommerce
+JWT_SECRET=your-super-secret-jwt-key
+JWT_REFRESH_SECRET=your-super-secret-refresh-key
+JWT_EXPIRES_IN=15m
+JWT_REFRESH_EXPIRES_IN=7d
+
+# Razorpay test keys
+RAZORPAY_KEY_ID=rzp_test_xxxxxxxxxxxx
+RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+RAZORPAY_WEBHOOK_SECRET=your_razorpay_webhook_secret
+
+OAUTH_STATE_SECRET=random-signing-string
+FRONTEND_URL=http://localhost:3000
+```
 
 ---
 
 ## 📡 API Quick Reference
 
-Base URL: `http://localhost:4000/api`
+Base URL: `http://localhost:4000/api` (Laravel backend)
 
 ### Auth
 | Method | Endpoint | Description |
 |---|---|---|
 | POST | `/auth/signup` | Register with email + password |
-| POST | `/auth/login` | Login — sets httpOnly cookies |
-| POST | `/auth/logout` | Clear session cookies |
-| POST | `/auth/refresh` | Refresh access token |
+| POST | `/auth/login` | Login — Sanctum token (httpOnly cookie) |
+| POST | `/auth/logout` | Clear session |
 | GET | `/auth/me` | Current user (requires auth) |
-| GET | `/auth/google` | Google OAuth redirect |
-| GET | `/auth/github` | GitHub OAuth redirect |
 
 ### Products
 | Method | Endpoint | Description |
