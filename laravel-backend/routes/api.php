@@ -1,7 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminCustomerController;
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminSettingsController;
+use App\Http\Controllers\AdminAnalyticsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
@@ -56,4 +61,17 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('/admin')->group(function (
     Route::put('/categories/{id}', [AdminCategoryController::class, 'update']);
     Route::patch('/categories/{id}', [AdminCategoryController::class, 'update']);
     Route::delete('/categories/{id}', [AdminCategoryController::class, 'destroy']);
+
+    Route::get('/dashboard', AdminDashboardController::class);
+    Route::get('/analytics', AdminAnalyticsController::class);
+
+    Route::get('/orders', [AdminOrderController::class, 'index']);
+    Route::get('/orders/{id}', [AdminOrderController::class, 'show']);
+    Route::patch('/orders/{id}/status', [AdminOrderController::class, 'updateStatus']);
+
+    Route::get('/customers', [AdminCustomerController::class, 'index']);
+    Route::get('/customers/{id}', [AdminCustomerController::class, 'show']);
+
+    Route::get('/settings', [AdminSettingsController::class, 'index']);
+    Route::put('/settings', [AdminSettingsController::class, 'update']);
 });

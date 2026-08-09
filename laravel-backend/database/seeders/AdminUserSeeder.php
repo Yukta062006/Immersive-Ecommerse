@@ -10,6 +10,11 @@ class AdminUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     *
+     * DEVELOPMENT-ONLY admin account.
+     * The default credentials (admin@immersive.test / ChangeMe123!) are for
+     * local development. Override via ADMIN_EMAIL / ADMIN_NAME / ADMIN_PASSWORD
+     * in non-local environments and change the password after first login.
      */
     public function run(): void
     {

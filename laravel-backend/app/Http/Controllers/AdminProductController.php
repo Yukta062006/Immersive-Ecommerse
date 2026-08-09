@@ -10,6 +10,7 @@ use App\Models\ProductImage;
 use App\Models\ProductVariant;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class AdminProductController extends Controller
@@ -83,6 +84,7 @@ class AdminProductController extends Controller
         });
 
         $product->load(['category', 'images', 'variants']);
+        $this->forgetAggregateCache();
 
         return response()->json([
             'success' => true,
@@ -115,6 +117,7 @@ class AdminProductController extends Controller
         });
 
         $product->load(['category', 'images', 'variants']);
+        $this->forgetAggregateCache();
 
         return response()->json([
             'success' => true,
@@ -134,11 +137,24 @@ class AdminProductController extends Controller
         }
 
         $product->delete();
+        $this->forgetAggregateCache();
 
         return response()->json([
             'success' => true,
             'message' => 'Product deleted successfully',
         ], 200);
+    }
+
+    /**
+     * Dashboard/analytics aggregates are cached 60s; drop them on any product write.
+     */
+    private function forgetAggregateCache(): void
+    {
+        Cache::forget('admin.dashboard');
+        Cache::forget('admin.analytics.30');
+        Cache::forget('admin.analytics.90');
+        Cache::forget('admin.analytics.365');
+        Cache::forget('admin.analytics.all');
     }
 
     private function syncImages(Product $product, array $images): void
