@@ -1,7 +1,8 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import Image from 'next/image';
 import { Plus, Pencil, Trash2, FolderTree } from 'lucide-react';
 import type { AdminCategory } from '@/types/admin';
 import type { CategoryPayload } from '@/lib/admin-api';
@@ -118,8 +119,8 @@ export default function AdminCategoriesPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-semibold text-zinc-100">Categories</h2>
-          <p className="text-sm text-zinc-500 mt-1">{categories.length} categor{categories.length === 1 ? 'y' : 'ies'}</p>
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-zinc-100">Categories</h2>
+          <p className="text-sm text-gray-500 dark:text-zinc-500 mt-1">{categories.length} categor{categories.length === 1 ? 'y' : 'ies'}</p>
         </div>
         <Button variant="primary" size="sm" onClick={openCreate}>
           <Plus className="w-4 h-4" />
@@ -130,7 +131,7 @@ export default function AdminCategoriesPage() {
       <Card className="overflow-hidden">
         {categoriesQuery.isLoading ? (
           <div className="flex items-center justify-center py-24">
-            <Spinner className="w-6 h-6 text-indigo-400" />
+            <Spinner className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
           </div>
         ) : categories.length === 0 ? (
           <EmptyState
@@ -147,7 +148,7 @@ export default function AdminCategoriesPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="text-left text-xs text-zinc-500 border-b border-zinc-800">
+                <tr className="text-left text-xs text-gray-500 dark:text-zinc-500 border-b border-gray-200 dark:border-zinc-800">
                   <th className="py-3 px-5 font-medium">Name</th>
                   <th className="py-3 px-5 font-medium">Slug</th>
                   <th className="py-3 px-5 font-medium text-right">Active products</th>
@@ -156,33 +157,33 @@ export default function AdminCategoriesPage() {
               </thead>
               <tbody>
                 {categories.map((c) => (
-                  <tr key={c.id} className="border-b border-zinc-800/50 last:border-0 hover:bg-zinc-800/30 transition-colors">
+                  <tr key={c.id} className="border-b border-gray-200/60 dark:border-zinc-800/50 last:border-0 hover:bg-gray-50 dark:hover:bg-zinc-800/30 transition-colors">
                     <td className="py-3 px-5">
                       <div className="flex items-center gap-3">
                         {c.image ? (
-                          <img src={c.image} alt={c.name} className="w-9 h-9 rounded-lg object-cover bg-zinc-800 shrink-0" />
+                          <Image src={c.image} alt={c.name} width={36} height={36} unoptimized className="w-9 h-9 rounded-lg object-cover bg-gray-100 dark:bg-zinc-800 shrink-0" />
                         ) : (
-                          <div className="w-9 h-9 rounded-lg bg-zinc-800 flex items-center justify-center shrink-0">
-                            <FolderTree className="w-4 h-4 text-zinc-600" />
+                          <div className="w-9 h-9 rounded-lg bg-gray-100 dark:bg-zinc-800 flex items-center justify-center shrink-0">
+                            <FolderTree className="w-4 h-4 text-gray-400 dark:text-zinc-600" />
                           </div>
                         )}
-                        <span className="font-medium text-zinc-200">{c.name}</span>
+                        <span className="font-medium text-gray-900 dark:text-zinc-200">{c.name}</span>
                       </div>
                     </td>
-                    <td className="py-3 px-5 text-zinc-500">{c.slug}</td>
-                    <td className="py-3 px-5 text-right text-zinc-400">{c.productCount}</td>
+                    <td className="py-3 px-5 text-gray-500 dark:text-zinc-500">{c.slug}</td>
+                    <td className="py-3 px-5 text-right text-gray-500 dark:text-zinc-400">{c.productCount}</td>
                     <td className="py-3 px-5">
                       <div className="flex items-center justify-end gap-1">
                         <button
                           onClick={() => openEdit(c)}
-                          className="p-2 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-700/60 transition-colors"
+                          className="p-2 rounded-lg text-gray-500 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-zinc-100 hover:bg-gray-200 dark:hover:bg-zinc-700/60 transition-colors"
                           aria-label={`Edit ${c.name}`}
                         >
                           <Pencil className="w-4 h-4" />
                         </button>
                         <button
                           onClick={() => setDeleteTarget(c)}
-                          className="p-2 rounded-lg text-zinc-400 hover:text-red-400 hover:bg-red-500/10 transition-colors"
+                          className="p-2 rounded-lg text-gray-500 dark:text-zinc-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-500/10 transition-colors"
                           aria-label={`Delete ${c.name}`}
                         >
                           <Trash2 className="w-4 h-4" />
@@ -199,8 +200,8 @@ export default function AdminCategoriesPage() {
 
       {editor.open && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={submitting ? undefined : closeEditor}>
-          <div className="w-full max-w-lg bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <h3 className="text-lg font-semibold text-zinc-100 mb-5">
+          <div className="w-full max-w-lg bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-2xl p-6 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-zinc-100 mb-5">
               {editor.category ? 'Edit category' : 'New category'}
             </h3>
             <form onSubmit={handleSave} className="space-y-4">
@@ -230,7 +231,7 @@ export default function AdminCategoriesPage() {
         title="Delete category?"
         message={
           <>
-            Deleting <span className="font-medium text-zinc-200">{deleteTarget?.name}</span> will{' '}
+            Deleting <span className="font-medium text-gray-900 dark:text-zinc-200">{deleteTarget?.name}</span> will{' '}
             <span className="text-red-400">permanently delete all products in this category</span> along with it. This
             cannot be undone.
           </>

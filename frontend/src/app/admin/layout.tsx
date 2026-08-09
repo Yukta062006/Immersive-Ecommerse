@@ -8,10 +8,10 @@ import { Spinner } from './_components/ui';
 
 function LoadingScreen() {
   return (
-    <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
-      <div className="flex items-center gap-3 text-zinc-500">
-        <Spinner className="w-5 h-5 text-indigo-400" />
-        <span className="text-sm">Loading admin…</span>
+    <div className="min-h-screen bg-white flex items-center justify-center dark:bg-zinc-950">
+      <div className="flex items-center gap-3 text-gray-500 dark:text-zinc-500">
+        <Spinner className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+        <span className="text-sm text-gray-700 dark:text-zinc-300">Loading admin…</span>
       </div>
     </div>
   );

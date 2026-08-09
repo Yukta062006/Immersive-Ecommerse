@@ -8,11 +8,11 @@ type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'ghost' | 'outline';
 type ButtonSize = 'sm' | 'md' | 'lg';
 
 const buttonVariants: Record<ButtonVariant, string> = {
-  primary: 'bg-indigo-600 text-white hover:bg-indigo-500 disabled:hover:bg-indigo-600 shadow-sm shadow-indigo-950/20',
-  secondary: 'bg-zinc-800 text-zinc-100 hover:bg-zinc-700 disabled:hover:bg-zinc-800',
+  primary: 'bg-indigo-600 text-white hover:bg-indigo-500 disabled:hover:bg-indigo-600 shadow-sm',
+  secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200 disabled:hover:bg-gray-100 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700 dark:disabled:hover:bg-zinc-800',
   danger: 'bg-red-600 text-white hover:bg-red-500 disabled:hover:bg-red-600',
-  ghost: 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/70 disabled:hover:bg-transparent',
-  outline: 'border border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:border-zinc-600',
+  ghost: 'text-gray-500 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/70 disabled:hover:bg-transparent',
+  outline: 'border border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:border-zinc-600',
 };
 
 const buttonSizes: Record<ButtonSize, string> = {
@@ -58,18 +58,24 @@ export function Badge({ className, children }: { className?: string; children: R
   );
 }
 
+const STATUS_STYLES: Record<string, string> = {
+  active: 'bg-emerald-500/10 text-emerald-600 border border-emerald-500/30 dark:text-emerald-400',
+  draft: 'bg-amber-500/10 text-amber-600 border border-amber-500/30 dark:text-amber-400',
+  archived: 'bg-gray-500/10 text-gray-500 border border-gray-500/30 dark:text-zinc-400',
+  pending: 'bg-amber-500/10 text-amber-600 border border-amber-500/30 dark:text-amber-400',
+  processing: 'bg-blue-500/10 text-blue-600 border border-blue-500/30 dark:text-blue-400',
+  shipped: 'bg-indigo-500/10 text-indigo-600 border border-indigo-500/30 dark:text-indigo-400',
+  delivered: 'bg-emerald-500/10 text-emerald-600 border border-emerald-500/30 dark:text-emerald-400',
+  cancelled: 'bg-red-500/10 text-red-600 border border-red-500/30 dark:text-red-400',
+};
+
 export function StatusBadge({ status }: { status: string }) {
-  const map: Record<string, string> = {
-    active: 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20',
-    draft: 'bg-amber-500/10 text-amber-400 border border-amber-500/20',
-    archived: 'bg-zinc-500/10 text-zinc-400 border border-zinc-500/20',
-  };
-  return <Badge className={map[status] || map.archived}>{status}</Badge>;
+  return <Badge className={STATUS_STYLES[status] || STATUS_STYLES.archived}>{status}</Badge>;
 }
 
 export function Card({ className, children }: { className?: string; children: ReactNode }) {
   return (
-    <div className={cn('bg-zinc-900/60 border border-zinc-800 rounded-2xl', className)}>{children}</div>
+    <div className={cn('bg-white border border-gray-200 rounded-2xl shadow-sm dark:bg-zinc-900/70 dark:border-zinc-800', className)}>{children}</div>
   );
 }
 
@@ -83,7 +89,7 @@ export function Spinner({ className }: { className?: string }) {
 }
 
 const fieldBase =
-  'w-full bg-zinc-950/60 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-500 outline-none transition-colors focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/40 disabled:opacity-50 disabled:cursor-not-allowed';
+  'w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 outline-none transition-colors focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/40 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-zinc-950/60 dark:border-zinc-800 dark:text-zinc-100 dark:placeholder:text-zinc-500';
 
 interface FieldProps {
   label: string;
@@ -97,12 +103,12 @@ interface FieldProps {
 export function Field({ label, required, hint, error, children, className }: FieldProps) {
   return (
     <label className={cn('block', className)}>
-      <span className="block text-xs font-medium text-zinc-400 mb-1.5">
+      <span className="block text-xs font-medium text-gray-500 dark:text-zinc-400 mb-1.5">
         {label}
         {required && <span className="text-red-500 ml-0.5">*</span>}
       </span>
       {children}
-      {hint && !error && <span className="block text-[11px] text-zinc-500 mt-1">{hint}</span>}
+      {hint && !error && <span className="block text-[11px] text-gray-500 dark:text-zinc-500 mt-1">{hint}</span>}
       {error && <span className="block text-[11px] text-red-500 mt-1">{error}</span>}
     </label>
   );
@@ -139,7 +145,7 @@ export function Toggle({ checked, onChange, label }: { checked: boolean; onChang
       onClick={() => onChange(!checked)}
       className={cn(
         'relative inline-flex h-6 w-11 flex-shrink-0 items-center rounded-full transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500',
-        checked ? 'bg-indigo-600' : 'bg-zinc-700'
+        checked ? 'bg-indigo-600' : 'bg-gray-300 dark:bg-zinc-700'
       )}
     >
       <span
@@ -179,11 +185,11 @@ export function ConfirmModal({ open, title, message, confirmLabel = 'Confirm', l
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-            className="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl"
+            className="w-full max-w-md bg-white border border-gray-200 rounded-2xl p-6 shadow-2xl dark:bg-zinc-900 dark:border-zinc-800"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="text-lg font-semibold text-zinc-100 mb-2">{title}</h3>
-            <div className="text-sm text-zinc-400 mb-6">{message}</div>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-zinc-100 mb-2">{title}</h3>
+            <div className="text-sm text-gray-500 dark:text-zinc-400 mb-6">{message}</div>
             <div className="flex justify-end gap-3">
               <Button variant="outline" onClick={onCancel} disabled={loading}>Cancel</Button>
               <Button variant="danger" onClick={onConfirm} loading={loading}>{confirmLabel}</Button>
@@ -205,8 +211,8 @@ export function Pagination({ page, pages, onPageChange }: PaginationProps) {
   if (pages <= 1) return null;
   return (
     <div className="flex items-center justify-between gap-3 mt-4">
-      <p className="text-xs text-zinc-500">
-        Page <span className="text-zinc-300">{page}</span> of <span className="text-zinc-300">{pages}</span>
+      <p className="text-xs text-gray-500 dark:text-zinc-500">
+        Page <span className="text-gray-900 dark:text-zinc-300">{page}</span> of <span className="text-gray-900 dark:text-zinc-300">{pages}</span>
       </p>
       <div className="flex items-center gap-2">
         <Button variant="outline" size="sm" disabled={page <= 1} onClick={() => onPageChange(page - 1)}>
@@ -223,13 +229,13 @@ export function Pagination({ page, pages, onPageChange }: PaginationProps) {
 export function EmptyState({ title, message, action }: { title: string; message?: string; action?: ReactNode }) {
   return (
     <div className="text-center py-16">
-      <div className="mx-auto w-12 h-12 rounded-2xl bg-zinc-800 flex items-center justify-center mb-4">
-        <svg className="w-6 h-6 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <div className="mx-auto w-12 h-12 rounded-2xl bg-gray-100 dark:bg-zinc-800 flex items-center justify-center mb-4">
+        <svg className="w-6 h-6 text-gray-400 dark:text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
         </svg>
       </div>
-      <h3 className="text-sm font-medium text-zinc-300 mb-1">{title}</h3>
-      {message && <p className="text-sm text-zinc-500 max-w-sm mx-auto">{message}</p>}
+      <h3 className="text-sm font-medium text-gray-900 dark:text-zinc-300 mb-1">{title}</h3>
+      {message && <p className="text-sm text-gray-500 dark:text-zinc-500 max-w-sm mx-auto">{message}</p>}
       {action && <div className="mt-4">{action}</div>}
     </div>
   );

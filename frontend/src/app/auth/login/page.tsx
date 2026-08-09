@@ -22,7 +22,7 @@ function LoginContent() {
       </div>
 
       <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-6">
-        Don't have an account?{' '}
+        Don&apos;t have an account?{' '}
         <Link href={`/auth/signup${redirect !== '/' ? `?redirect=${encodeURIComponent(redirect)}` : ''}`} className="text-indigo-600 font-medium hover:text-indigo-700">
           Sign up
         </Link>

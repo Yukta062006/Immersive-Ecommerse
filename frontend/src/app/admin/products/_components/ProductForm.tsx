@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Plus, X, Trash2, ImagePlus, Package } from 'lucide-react';
 import type { AdminCategory, AdminProduct } from '@/types/admin';
 import type { ProductPayload, ProductImagePayload } from '@/lib/admin-api';
@@ -274,7 +275,7 @@ export default function ProductForm({ initial, categories, submitting, onSubmit 
                   <div key={index} className="flex items-start gap-3 rounded-lg border border-zinc-800 p-3">
                     <div className="w-14 h-14 rounded-lg bg-zinc-800 flex items-center justify-center overflow-hidden shrink-0">
                       {img.url ? (
-                        <img src={img.url} alt={img.alt || 'Product image'} className="w-full h-full object-cover" />
+                        <Image src={img.url} alt={img.alt || 'Product image'} width={56} height={56} unoptimized className="w-full h-full object-cover" />
                       ) : (
                         <Package className="w-5 h-5 text-zinc-600" />
                       )}
