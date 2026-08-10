@@ -22,11 +22,13 @@ export const signup = asyncHandler(
       throw ApiError.conflict("An account with this email already exists");
     }
 
-    const user = await User.create({
+    const user = new User({
       email,
       passwordHash: password,
       name,
     });
+
+    await user.save();
 
     const accessToken = signAccessToken(user._id.toString());
     const refreshToken = signRefreshToken(user._id.toString());
